@@ -41,6 +41,9 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
         <extensions>true</extensions>
         <configuration>
           <instructions>
+            <_dsannotations>
+              org.jahia.modules.bootstrap4.initializers.*
+            </_dsannotations>
             <Export-Package>org.jahia.modules.bootstrap4</Export-Package>
           </instructions>
         </configuration>

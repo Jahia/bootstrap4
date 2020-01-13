@@ -11,6 +11,7 @@ import org.jahia.services.content.nodetypes.initializers.ModuleChoiceListInitial
 import org.jahia.services.content.nodetypes.renderer.AbstractChoiceListRenderer;
 import org.jahia.services.content.nodetypes.renderer.ModuleChoiceListRenderer;
 import org.jahia.services.render.RenderContext;
+import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,12 +20,12 @@ import javax.jcr.RepositoryException;
 import javax.jcr.Value;
 import java.util.*;
 
-
+@Component(name = "gridTypeInitializer", service = ModuleChoiceListInitializer.class, immediate = true)
 public class GridTypeInitializer extends AbstractChoiceListRenderer implements ModuleChoiceListInitializer, ModuleChoiceListRenderer {
 
     private static final Logger logger = LoggerFactory.getLogger(GridTypeInitializer.class);
 
-    private String key;
+    private String key = "gridTypeInitializer";
 
     /**
      * {@inheritDoc}
