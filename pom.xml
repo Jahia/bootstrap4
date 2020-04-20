@@ -36,7 +36,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
         <connection>scm:git:git@github.com:Jahia/bootstrap4.git</connection>
         <developerConnection>scm:git:git@github.com:Jahia/bootstrap4.git</developerConnection>
         <url>https://github.com/Jahia/bootstrap4.git</url>
-      <tag>HEAD</tag>
+      <tag>2_3_x</tag>
   </scm>
     <repositories>
         <repository>
