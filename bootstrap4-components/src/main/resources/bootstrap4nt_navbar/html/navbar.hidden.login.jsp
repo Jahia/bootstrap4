@@ -26,17 +26,17 @@
                                 <fmt:message key="bootstrap4mix_customBaseNavbar.label.live"/>
                             </a>
                         </c:if>
-                        <c:if test="${! renderContext.previewMode && jcr:hasPermission(renderContext.mainResource.node, 'editModeAccess')}">
+                        <c:if test="${! renderContext.previewMode && jcr:hasPermission(renderContext.mainResource.node, 'jContentAccess')}">
                             <a href="<c:url value='${url.preview}'/>" class="dropdown-item">
                                 <fmt:message key="bootstrap4mix_customBaseNavbar.label.preview"/>
                             </a>
                         </c:if>
-                        <c:if test="${! renderContext.editMode && jcr:hasPermission(renderContext.mainResource.node, 'editModeAccess')}">
+                        <c:if test="${! renderContext.editMode && jcr:hasPermission(renderContext.mainResource.node, 'jContentAccess')}">
                             <a href="<c:url value='${url.edit}'/>" class="dropdown-item">
                                 <fmt:message key="bootstrap4mix_customBaseNavbar.label.edit"/>
                             </a>
                         </c:if>
-                        <c:if test="${! renderContext.editMode && !jcr:hasPermission(renderContext.mainResource.node, 'editModeAccess') && jcr:hasPermission(renderContext.mainResource.node, 'contributeModeAccess')}">
+                        <c:if test="${! renderContext.editMode && !jcr:hasPermission(renderContext.mainResource.node, 'jContentAccess') && jcr:hasPermission(renderContext.mainResource.node, 'contributeModeAccess')}">
                             <a href="<c:url value='${url.contribute}'/>" class="dropdown-item">
                                 <fmt:message key="bootstrap4mix_customBaseNavbar.label.contribute"/>
                             </a>
