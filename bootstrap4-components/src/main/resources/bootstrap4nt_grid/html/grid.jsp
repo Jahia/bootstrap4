@@ -27,11 +27,13 @@
     <c:set var="sectionId" value="${currentNode.properties['sectionId'].string}"/>
     <c:set var="sectionStyle" value="${currentNode.properties['sectionStyle'].string}"/>
     <c:set var="sectionRole" value="${currentNode.properties['sectionRole'].string}"/>
-
+    <c:set var="sectionAria" value="${currentNode.properties['sectionAria'].string}"/>
+    
     <${sectionType}<c:if test="${not empty sectionId}"> id="${sectionId}"</c:if><c:if
         test="${not empty sectionCssClass}"><c:out value=" "/>class="${sectionCssClass}"</c:if><c:if
         test="${not empty sectionRole}"><c:out value=" "/>role="${sectionRole}"</c:if><c:if
-        test="${not empty sectionStyle}"><c:out value=" "/>style="${sectionStyle}"</c:if>>
+        test="${not empty sectionStyle}"><c:out value=" "/>style="${sectionStyle}"</c:if><c:if
+        test="${not empty sectionAria}"><c:out value=" "/>aria-label="${sectionAria}"</c:if>>
 </c:if>
 
 <c:if test="${createContainer}">
