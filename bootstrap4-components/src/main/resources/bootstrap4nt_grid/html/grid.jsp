@@ -29,9 +29,9 @@
     <c:set var="sectionRole" value="${currentNode.properties['sectionRole'].string}"/>
 
     <${sectionType}<c:if test="${not empty sectionId}"> id="${sectionId}"</c:if><c:if
-        test="${not empty sectionCssClass}"><c:out value=" "/>class="${sectionCssClass}"</c:if><c:if
-        test="${not empty sectionRole}"><c:out value=" "/>role="${sectionRole}"</c:if><c:if
-        test="${not empty sectionStyle}"><c:out value=" "/>style="${sectionStyle}"</c:if>>
+        test="${not empty sectionCssClass}"><c:out value=" "/>class="${fn:escapeXml(sectionCssClass)}"</c:if><c:if
+        test="${not empty sectionRole}"><c:out value=" "/>role="${fn:escapeXml(sectionRole)}"</c:if><c:if
+        test="${not empty sectionStyle}"><c:out value=" "/>style="${fn:escapeXml(sectionStyle)}"</c:if>>
 </c:if>
 
 <c:if test="${createContainer}">
