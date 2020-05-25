@@ -23,7 +23,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
   <parent>
     <groupId>org.jahia.modules</groupId>
     <artifactId>bootstrap4-modules</artifactId>
-    <version>3.0.1-SNAPSHOT</version>
+    <version>4.5.0-SNAPSHOT</version>
   </parent>
   <artifactId>bootstrap4-core</artifactId>
   <packaging>bundle</packaging>
@@ -32,6 +32,6 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
   <properties>
     <jahia-depends>default,jquery,popperjs</jahia-depends>
     <Jahia-Module-Priority>2</Jahia-Module-Priority>
-    <jahia-module-signature>MCwCFHwiFQ5r3LgT3yX4bFhUE8kW+K4rAhQUQMJP38GybjDKjn7MqKGySiZYHA==</jahia-module-signature>
+    <jahia-module-signature>MCwCFEde+g1sacvqYy/iQeWG5vAc/XNDAhR2BgOkK++OiVo1b0shtc/eWx1MBw==</jahia-module-signature>
   </properties>
 </project>
