@@ -33,7 +33,17 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
     <Jahia-Module-Priority>1</Jahia-Module-Priority>
     <jahia-depends>bootstrap4-core,default,jquery,popperjs</jahia-depends>
     <jahia-module-signature>MCwCFFH2XgZYdG1FoLrPmUV8zw20TT+aAhRB4xBpMoiBqnjvwEv7TuaI2EZJag==</jahia-module-signature>
+    <version.compiler.plugin>3.3</version.compiler.plugin>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
+  <dependencies>
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>jsp-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
   <build>
     <plugins>
       <plugin>
@@ -47,6 +57,15 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
             </_dsannotations>
             <Export-Package>org.jahia.modules.bootstrap4</Export-Package>
           </instructions>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${version.compiler.plugin}</version>
+        <configuration>
+          <compilerArgument>-parameters</compilerArgument>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
         </configuration>
       </plugin>
     </plugins>

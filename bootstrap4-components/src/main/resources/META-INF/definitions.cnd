@@ -220,6 +220,7 @@
  - divClass (string)  = 'collapse navbar-collapse' autocreated indexed=no
  - addContainerWithinTheNavbar (boolean)  = 'false' autocreated indexed=no
  - addLoginButton (boolean)  = 'false' autocreated indexed=no
+ - addLanguageButton (boolean)  = 'true' autocreated indexed=no
  - loginMenuULClass (string)  = 'navbar-nav flex-row ml-md-auto d-none d-md-flex'
 
 [bootstrap4mix:customBaseNavbar] mixin
