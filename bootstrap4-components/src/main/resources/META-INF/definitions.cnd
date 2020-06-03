@@ -244,8 +244,12 @@
  itemtype = content
  - buttonClass (string)  = 'navbar-toggler navbar-toggler-right' indexed=no
 
+[bootstrap4mix:customRootPage] > jmix:templateMixin mixin
+ extends = bootstrap4nt:navbar
+ - customRootPage (weakreference, picker[type='page']) < 'jnt:page'
+
 [bootstrap4nt:navbar] > jnt:content, bootstrap4mix:component, jmix:navMenuComponent
- - root (string, choicelist[resourceBundle])  = 'homePage' autocreated indexed=no   < 'homePage', 'currentPage', 'parentPage'
+ - root (string, choicelist[navbarRootInitializer,resourceBundle])  = 'homePage' autocreated indexed=no   < 'homePage', 'currentPage', 'parentPage','customRootPage'
 
 [bootstrap4nt:tabs] > jnt:content, bootstrap4mix:component, jmix:manuallyOrderable, jmix:list, jmix:siteContent orderable
  - type (string, choicelist[resourceBundle, moduleImage='png'])  = 'tab' autocreated indexed=no < 'tab', 'pill','link'
