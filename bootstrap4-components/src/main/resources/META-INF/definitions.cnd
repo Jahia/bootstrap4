@@ -21,6 +21,7 @@
  - sectionCssClass (string) indexed=no
  - sectionStyle (string) indexed=no
  - sectionRole (string) indexed=no
+ - sectionAria (string) indexed=no
 
 [bootstrap4mix:createContainer] mixin
  extends = bootstrap4nt:grid

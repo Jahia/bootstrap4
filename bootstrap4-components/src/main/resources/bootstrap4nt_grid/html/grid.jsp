@@ -27,6 +27,7 @@
     <c:set var="sectionId" value="${currentNode.properties['sectionId'].string}"/>
     <c:set var="sectionStyle" value="${currentNode.properties['sectionStyle'].string}"/>
     <c:set var="sectionRole" value="${currentNode.properties['sectionRole'].string}"/>
+    <c:set var="sectionAria" value="${currentNode.properties['sectionAria'].string}"/>
 
     <${sectionType}<c:if test="${not empty sectionId}"> id="${sectionId}"</c:if><c:if
         test="${not empty sectionCssClass}"><c:out value=" "/>class="${fn:escapeXml(sectionCssClass)}"</c:if><c:if
