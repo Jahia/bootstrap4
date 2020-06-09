@@ -72,7 +72,7 @@
                 </c:if>
             </c:otherwise>
         </c:choose>
-        <a href="${linkUrl}" class="${buttonClass}" role="button" ${aria}>${title}</a>
+        <a href="${linkUrl}" class="${buttonClass}" role="button" ${aria} id="button_${currentNode.identifier}">${title}</a>
     </c:when>
     <c:when test="${buttonType eq 'externalLink'}">
         <c:url var="linkUrl" value="${currentNode.properties.externalLink.string}"/>
@@ -84,7 +84,7 @@
                 <fmt:message key="bootstrap4nt_button.noUrl"/>
             </span>
         </c:if>
-        <a href="${linkUrl}" class="${buttonClass}" role="button" ${aria}>${title}</a>
+        <a href="${linkUrl}" class="${buttonClass}" role="button" ${aria} id="button_${currentNode.identifier}">${title}</a>
     </c:when>
     <c:when test="${buttonType eq 'modal'}">
         <c:set var="modalSize" value=" modal-${currentNode.properties.modalSize.string}"/>
@@ -99,7 +99,7 @@
         <c:if test="${empty closeText}">
             <fmt:message key="bootstrap4nt_button.close" var="closeText"/>
         </c:if>
-        <button type="button" class="${buttonClass}" ${aria} data-toggle="modal" data-target="#modal-${currentNode.identifier}">
+        <button type="button" class="${buttonClass}" ${aria} data-toggle="modal" data-target="#modal-${currentNode.identifier}" id="button_${currentNode.identifier}">
             ${title}
         </button>
         <div class="modal fade" id="modal-${currentNode.identifier}" tabindex="-1" role="dialog" aria-labelledby="modalLabel_${currentNode.identifier}" aria-hidden="${renderContext.editMode ? 'false' : 'true'}">
@@ -132,7 +132,7 @@
         <c:if test="${empty title}">
             <fmt:message key="bootstrap4nt_button.readMore" var="title"/>
         </c:if>
-        <a href="#collapse-${currentNode.identifier}" class="${buttonClass}" ${aria} data-toggle="collapse" aria-expanded="false" aria-controls="collapse-${currentNode.identifier}">${title}</a>
+        <a href="#collapse-${currentNode.identifier}" class="${buttonClass}" ${aria} data-toggle="collapse" aria-expanded="false" aria-controls="collapse-${currentNode.identifier}" id="button_${currentNode.identifier}">${title}</a>
         <div class="collapse" id="collapse-${currentNode.identifier}">
             <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jmix:droppableContent')}" var="droppableContent">
                 <template:module node="${droppableContent}" editable="true"/>
@@ -155,7 +155,7 @@
         <c:if test="${! empty popoverContent}">
             <c:set var="pContent"> data-content="${fn:escapeXml(popoverContent)}"</c:set>
         </c:if>
-        <button type="button" class="${buttonClass}" ${aria} data-toggle="popover" ${pTitle} ${pContent} data-container="body" data-placement="${direction}" data-trigger="focus">${title}</button>
+        <button type="button" class="${buttonClass}" ${aria} data-toggle="popover" ${pTitle} ${pContent} data-container="body" data-placement="${direction}" data-trigger="focus" id="button_${currentNode.identifier}">${title}</button>
         <template:addResources type="inline">
             <script>
                 $(function () {
