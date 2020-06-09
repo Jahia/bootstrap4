@@ -17,4 +17,17 @@
         <function-signature>java.lang.String replaceAll(java.lang.String, java.lang.String, java.lang.String)</function-signature>
     </function>
 
+    <tag>
+        <description>Generates a link to switch to the specified language</description>
+        <name>switchToLanguageLink</name>
+        <tag-class>org.jahia.modules.bootstrap4.taglibs.SwitchToLanguageTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>Indicates which language we want to generate a link to</description>
+            <name>languageCode</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+    </tag>
 </taglib>
