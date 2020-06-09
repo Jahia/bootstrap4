@@ -33,7 +33,7 @@
         test="${not empty sectionCssClass}"><c:out value=" "/>class="${sectionCssClass}"</c:if><c:if
         test="${not empty sectionRole}"><c:out value=" "/>role="${sectionRole}"</c:if><c:if
         test="${not empty sectionStyle}"><c:out value=" "/>style="${sectionStyle}"</c:if><c:if
-        test="${not empty sectionAria}"><c:out value=" "/>aria-label="${sectionAria}"</c:if>>
+        test="${not empty sectionAria}"><c:out value=" "/>aria-label="${fn:escapeXml(sectionAria)}"</c:if>>
 </c:if>
 
 <c:if test="${createContainer}">
