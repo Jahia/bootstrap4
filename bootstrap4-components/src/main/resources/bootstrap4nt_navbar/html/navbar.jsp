@@ -14,10 +14,12 @@
 <c:choose>
     <c:when test="${jcr:isNodeType(siteNode, 'bootstrap4mix:siteBrand')}">
         <c:set var="brandImage" value="${siteNode.properties.brandImage.node}"/>
+        <c:set var="brandImageMobile" value="${siteNode.properties.brandImageMobile.node}"/>
         <c:set var="brandText" value="${siteNode.properties.brandText.string}"/>
     </c:when>
     <c:when test="${jcr:isNodeType(currentNode, 'bootstrap4mix:brand')}">
         <c:set var="brandImage" value="${currentNode.properties.brandImage.node}"/>
+        <c:set var="brandImageMobile" value="${currentNode.properties.brandImageMobile.node}"/>
         <c:set var="brandText" value="${currentNode.properties.brandText.string}"/>
     </c:when>
 </c:choose>
@@ -40,6 +42,13 @@
 <c:if test="${empty navClass}">
     <c:set var="navClass" value="navbar navbar-expand-lg navbar-light bg-light"/>
 </c:if>
+<%-- try to get the expand size --%>
+<c:set var="expand" value="lg"/>
+<c:forEach items="${fn:split(navClass, ' ')}" var="currentClass">
+    <c:if test="${fn:startsWith(currentClass, 'navbar-expand-')}">
+        <c:set var="expand" value="${fn:replace(currentClass, 'navbar-expand-', '')}"/>
+    </c:if>
+</c:forEach>
 <c:if test="${empty divClass}">
     <c:set var="divClass" value="collapse navbar-collapse"/>
 </c:if>
@@ -86,8 +95,18 @@
 
     <a class="navbar-brand" href="${rootNodeUrl}">
         <c:if test="${! empty brandImage}">
-            <c:url var="brandImageUrl" value="${brandImage.url}"/>
-            <img src="${brandImageUrl}" class="d-inline-block align-top" alt="">
+            <c:url var="brandImageUrl" value="${brandImage.url}" context="/"/>
+            <c:choose>
+                <c:when test="${! empty brandImageMobile}">
+                    <c:url var="brandImageMobileeUrl" value="${brandImageMobile.url}" context="/"/>
+                    <img src="${brandImageUrl}" class="align-top d-none d-${expand}-inline-block" alt="">
+                    <img src="${brandImageMobileeUrl}" class="align-top d-inline-block d-${expand}-none" alt="">
+                </c:when>
+                <c:otherwise>
+                    <img src="${brandImageUrl}" class="d-inline-block align-top" alt="">
+                </c:otherwise>
+            </c:choose>
+
         </c:if>
         ${brandText}
     </a>

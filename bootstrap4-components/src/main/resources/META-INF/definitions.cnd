@@ -180,11 +180,13 @@
  itemtype = content
  - titleColor (string, choicelist[resourceBundle])  = 'light' autocreated indexed=no < 'muted','primary','secondary','success','danger','warning','info','light','dark','white','body','black-50','white-50'
  - captionColor (string, choicelist[resourceBundle])  = 'light' autocreated indexed=no < 'muted','primary','secondary','success','danger','warning','info','light','dark','white','body','black-50','white-50'
+ - textAlign (string, choicelist[resourceBundle])  = 'text-center' autocreated indexed=no < 'text-left', 'text-right', 'text-center'
  - carouselItemClass (string) indexed=no
 
-[bootstrap4nt:carouselItem] > jnt:content, mix:title
+[bootstrap4nt:carouselItem] > jnt:content, mix:title, jmix:list orderable
  - image (weakreference, picker[type='image']) mandatory < 'jmix:image'
  - caption (string, textarea) i18n
+ + * (jmix:droppableContent)  = jmix:droppableContent
 
 [bootstrap4mix:carouselAdvancedSettings] mixin
  extends = bootstrap4nt:carousel
@@ -234,12 +236,14 @@
  extends = bootstrap4nt:navbar
  - brandText (string) i18n
  - brandImage (weakreference, picker[type='image']) < 'jmix:image'
+ - brandImageMobile (weakreference, picker[type='image']) < 'jmix:image'
 
 [bootstrap4mix:siteBrand] mixin
  extends = jnt:virtualsite
  itemtype = content
  - brandText (string) i18n
  - brandImage (weakreference, picker[type='image']) < 'jmix:image'
+ - brandImageMobile (weakreference, picker[type='image']) < 'jmix:image'
 
 [bootstrap4mix:customButtonNavbar]  mixin
  extends = bootstrap4nt:navbar
