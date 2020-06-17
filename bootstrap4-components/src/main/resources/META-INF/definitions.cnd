@@ -234,12 +234,14 @@
  extends = bootstrap4nt:navbar
  - brandText (string) i18n
  - brandImage (weakreference, picker[type='image']) < 'jmix:image'
+ - brandImageMobile (weakreference, picker[type='image']) < 'jmix:image'
 
 [bootstrap4mix:siteBrand] mixin
  extends = jnt:virtualsite
  itemtype = content
  - brandText (string) i18n
  - brandImage (weakreference, picker[type='image']) < 'jmix:image'
+ - brandImageMobile (weakreference, picker[type='image']) < 'jmix:image'
 
 [bootstrap4mix:customButtonNavbar]  mixin
  extends = bootstrap4nt:navbar
