@@ -18,7 +18,11 @@
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
 <c:set var="columns" value="${currentNode.properties.gridClasses.string}"/>
-<c:set var="colName" value="${currentNode.name}"/>
+
+<c:if test="${fn:startsWith(currentNode.path,'/modules') || renderContext.editModeConfigName eq 'studiomode'}">
+    <c:set var="colNamePrefix" value="${currentNode.name}-"/>
+</c:if>
+
 <c:set var="createAbsoluteAreas" value="${jcr:isNodeType(currentNode, 'bootstrap4mix:createAbsoluteAreas')}"/>
 <c:set var="moduleType" value="${createAbsoluteAreas? 'absoluteArea' : 'area'}"/>
 <c:set var="level" value="${createAbsoluteAreas? currentNode.properties.level.string : '0'}" />
@@ -43,7 +47,7 @@
     <c:when test="${not empty columns}">
         <c:forTokens items="${columns}" delims="," varStatus="status" var="col">
             <div class="${fn:trim(col)}">${displayAbsoluteArea}
-                <template:area path="${colName}-col${status.index}"
+                <template:area path="${colNamePrefix}col${status.index}"
                                areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/>
             </div>
         </c:forTokens>

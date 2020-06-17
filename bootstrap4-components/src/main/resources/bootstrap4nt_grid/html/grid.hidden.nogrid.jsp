@@ -8,7 +8,7 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
-<c:set var="colName" value="${currentNode.name}" />
+
 <c:set var="createAbsoluteAreas" value="${jcr:isNodeType(currentNode, 'bootstrap4mix:createAbsoluteAreas')}" />
 <c:set var="moduleType" value="${createAbsoluteAreas? 'absoluteArea' : 'area'}" />
 <c:set var="level" value="${createAbsoluteAreas? currentNode.properties.level.string : '0'}" />
@@ -37,4 +37,13 @@
         </c:if>
     </c:if>
 </c:if>
+<c:choose>
+    <c:when test="${fn:startsWith(currentNode.path,'/modules') || renderContext.editModeConfigName eq 'studiomode'}">
+        <c:set var="colName" value="${currentNode.name}"/>
+    </c:when>
+    <c:otherwise>
+        <c:set var="colName" value="main"/>
+    </c:otherwise>
+</c:choose>
+
 ${displayAbsoluteArea}<template:area path="${colName}" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/>
