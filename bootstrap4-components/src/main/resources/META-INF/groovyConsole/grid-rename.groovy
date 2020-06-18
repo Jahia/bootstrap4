@@ -74,7 +74,7 @@ JCRTemplate.getInstance().doExecuteWithSystemSession(null, Constants.EDIT_WORKSP
                                         logger.info("     - Remove old list " + listPath);
                                         try {
                                             if (doIt) {
-                                                session.removeItem(listNode.listPath);
+                                                session.removeItem(listPath);
                                                 session.save();
                                             }
                                         } catch (javax.jcr.ItemNotFoundException ex) {
