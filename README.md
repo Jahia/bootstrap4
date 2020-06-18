@@ -2,7 +2,7 @@
 Bootstrap 4 This is a Bootstrap 4 implementation of http://getbootstrap.com for Digital Experience Manager. This version is not compliant with the official bootstrap 3.  
   
 ## WARNING: Migration to Bootstrap 4 v2.5.0 or to v4.6.0
-If you update the Bootstrap 4 modules to v2.5.0 (for Jahia 7.3 users) or to v4.6.0 (for Jahia 8 users), please read the dedicated part [below](#migration-to-bootstrap-4-v250-or-v451)
+If you update the Bootstrap 4 modules to v2.5.0 (for Jahia 7.3 users) or to v4.6.0 (for Jahia 8 users), please read the dedicated part [below](#migration-to-bootstrap-4-v250-or-v460)
 
 ## Installation/dependencies  
  * First, you need to install the module Popper.js: available on the store https://store.jahia.com/module/popperjs  
@@ -50,10 +50,10 @@ This component provides bootstrap 4 styles and CK templates
 Adds a div describing the bootstrap version used  
   
 
-# Migration to Bootstrap 4 v2.5.0 or v4.5.1
+# Migration to Bootstrap 4 v2.5.0 or v4.6.0
 
-**Please read carefully this part if you update Bootstrap 4 to v2.5.0 or v4.5.1
-We did refactor the *Layout / Grid* component by renaming the generated areas. 
+**Please read carefully this part if you update Bootstrap 4 v2.5.0 (for Jahia 7.3 users) or to v4.6.0 (for Jahia 8 users).
+We did refactor the *Layout / Grid* component by renaming the generated areas.** 
 
 From version v2.5.0 or 4.6.0 of Bootstrap 4 component, the contentList above a *Layout / Grid* component do not contain the systemName of the grid anymore. 
 As a result, you will be able to copy/paste or rename a *Layout / Grid* component without losing the content (or having ghost content). 
