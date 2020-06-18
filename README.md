@@ -2,7 +2,7 @@
 Bootstrap 4 This is a Bootstrap 4 implementation of http://getbootstrap.com for Digital Experience Manager. This version is not compliant with the official bootstrap 3.  
   
 ## WARNING: Migration to Bootstrap 4 v2.5.0 or to v4.6.0
-If you update the Bootstrap 4 modules to v2.5.0 (for Jahia 7.3 users) or to v4.6.0 (for Jahia 8 users), please read the dedicated part [below](#migration-to-bootstrap-4-v250-or-v45)
+If you update the Bootstrap 4 modules to v2.5.0 (for Jahia 7.3 users) or to v4.6.0 (for Jahia 8 users), please read the dedicated part [below](#migration-to-bootstrap-4-v250-or-v451)
 
 ## Installation/dependencies  
  * First, you need to install the module Popper.js: available on the store https://store.jahia.com/module/popperjs  
