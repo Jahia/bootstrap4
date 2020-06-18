@@ -63,7 +63,7 @@ This feature is only working on site content (not for *Layout / Grid* component 
 ## How to apply this refactoring?  
 A groovy script has been made to refactor existing content. To execute this script, go to the  *Groovy Console* (via the tools http://localhost:8080/tools). The name of the script is **grid-rename.groovy**  
 First, you can execute this script to test it without checking the *Apply refactoring*. It will list the nodes that will need to be updated. Then, you can check the **Apply refactoring** to save the updates by on the default workspace.  
-If you get an error during script execution, have a look at the console to get the list of nodes to manually publish. Then you van try to run the script again. 
+If you get an error during script execution, have a look at the console to get the list of nodes to manually publish. Then you can try to run the script again. 
 
   
 ## What is done on this script?  
