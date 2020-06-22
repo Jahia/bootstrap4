@@ -77,7 +77,7 @@
         <div class="card-footer ${textColor}">
                 ${footer}
             <c:if test="${freeFooter}">
-                <template:area path="freeFooter" areaAsSubNode="true"/>
+                <template:area path="cardFooter" areaAsSubNode="true"/>
             </c:if>
         </div>
     </c:if>
