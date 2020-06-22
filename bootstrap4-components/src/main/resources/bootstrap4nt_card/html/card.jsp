@@ -65,7 +65,7 @@
     </c:if>
     <div class="${cardBodyCssClass}">
         <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jmix:droppableContent')}" var="droppableContent">
-            <c:if test="${droppableContent.name ne 'freeFooter'}">
+            <c:if test="${droppableContent.name ne 'cardFooter'}">
                 <template:module node="${droppableContent}" editable="true"/>
             </c:if>
         </c:forEach>
@@ -77,7 +77,7 @@
         <div class="card-footer ${textColor}">
                 ${footer}
             <c:if test="${freeFooter}">
-                <template:area path="freeFooter" areaAsSubNode="true"/>
+                <template:area path="cardFooter" areaAsSubNode="true"/>
             </c:if>
         </div>
     </c:if>
