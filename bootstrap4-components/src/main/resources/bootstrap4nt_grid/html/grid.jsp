@@ -38,12 +38,24 @@
 
 <c:if test="${createContainer}">
     <c:set var="containerId" value="${currentNode.properties['containerId'].string}"/>
-    <c:set var="containerCssClass" value="${currentNode.properties['containerCssClass'].string}"/>
+    <c:set var="containerCssClass" value="${currentNode.properties['containerCssClass'].string} "/>
+    <c:set var="gridLayout" value="${currentNode.properties['gridLayout'].string}"/>
+    <c:choose>
+        <c:when test="${gridLayout eq 'fixed-width'}">
+            <c:set var="containerType" value="container "/>
+        </c:when>
+        <c:when test="${gridLayout eq 'full-width'}">
+            <c:set var="containerType" value="container-fluid "/>
+        </c:when>
+        <c:otherwise>
+            <c:set var="containerType" value="${gridLayout} "/>
+        </c:otherwise>
+    </c:choose>
     <c:if test="${! empty containerCssClass}">
-        <c:set var="containerCssClass" value="${fn:replace(containerCssClass, 'container', '')}"/>
+        <c:set var="containerCssClass" value="${fn:replace(containerCssClass, containerType, '')}"/>
     </c:if>
-    <c:set var="gridLayout" value="${currentNode.properties['gridLayout'].string == 'full-width' ? 'container-fluid' : 'container'}"/>
-    <div<c:if test="${not empty containerId}"> id="${containerId}"</c:if> class="${gridLayout}<c:if
+
+    <div<c:if test="${not empty containerId}"> id="${containerId}"</c:if> class="${containerType}<c:if
         test="${not empty containerCssClass}"><c:out value=" "/>${containerCssClass}</c:if>">
 </c:if>
 
