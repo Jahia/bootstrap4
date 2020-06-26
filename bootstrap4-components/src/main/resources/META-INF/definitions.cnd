@@ -4,7 +4,6 @@
 <jmix = 'http://www.jahia.org/jahia/mix/1.0'>
 <mix = 'http://www.jcp.org/jcr/mix/1.0'>
 
-
 [bootstrap4mix:predefinedGrid] > jmix:templateMixin mixin
  extends = bootstrap4nt:grid
  - grid (string, choicelist[resourceBundle, moduleImage='png'])  = '4_8' autocreated indexed=no < '2_10', '3_9', '4_8', '4_4_4', '3_6_3', '3_3_3_3', '6_6', '8_4', '9_3', '10_2', '12'
@@ -28,7 +27,7 @@
  itemtype = content
  - containerId (string) < '[a-zA-Z0-9-_]+'
  - containerCssClass (string) indexed=no
- - gridLayout (string, choicelist[resourceBundle])  = 'fixed-width' autocreated indexed=no < 'fixed-width', 'full-width'
+ - gridLayout (string, choicelist[resourceBundle])  = 'fixed-width' autocreated indexed=no < 'fixed-width', 'full-width', 'container-sm', 'container-md', 'container-lg', 'container-xl'
 
 [bootstrap4mix:createRow] mixin
  extends = bootstrap4nt:grid
