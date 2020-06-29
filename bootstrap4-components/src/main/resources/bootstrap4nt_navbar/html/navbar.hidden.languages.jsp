@@ -15,9 +15,9 @@
     <ui:initLangBarAttributes activeLanguagesOnly="${renderContext.liveMode}"/>
     <c:set var="languageCodes" value="${requestScope.languageCodes}"/>
     <c:if test="${fn:length(languageCodes)>1}">
-        <li>
-        <div class="dropdown">
-            <a href="#" class="dropdown-toggle" id="languageSwitchButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="dropdown navbar-nav">
+            <a href="#" class="dropdown-toggle nav-link" id="languageSwitchButton" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">
                     ${fn:toUpperCase(renderContext.mainResourceLocale.language)}
             </a>
             <div class="dropdown-menu" aria-labelledby="languageSwitchButton">

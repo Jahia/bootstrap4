@@ -8,7 +8,7 @@
     </parent>
     <artifactId>bootstrap4-package</artifactId>
     <name>Bootstrap 4 Package</name>
-    <version>4.5.0</version>
+    <version>4.6.0</version>
     <packaging>pom</packaging>
     <description>Parent project to package all Bootstrap 4 related components.</description>
     <properties>
@@ -18,7 +18,7 @@
         <jahia.manifest.package.id>Bootstrap4</jahia.manifest.package.id>
         <jahia.manifest.description>popperjs, bootstrap4-core, bootstrap4-components</jahia.manifest.description>
         <jahia.manifest.license>org.jahia.core</jahia.manifest.license>
-        <jahia-module-signature>MCwCFG3k8sJy4mD+udkBsAbKgywVj+qqAhRScQQ753SwZFFT1jSX1YE6f2eCfw==</jahia-module-signature>
+        <jahia-module-signature>MCwCFDiKLX+AhiXO63qdS+s+L19t2U+YAhQjeR8aTnbvsQmwhP6MVbdKBtjo1w==</jahia-module-signature>
     </properties>
     <repositories>
         <repository>
@@ -43,12 +43,12 @@
         <dependency>
             <groupId>org.jahia.modules</groupId>
             <artifactId>bootstrap4-core</artifactId>
-            <version>4.5.0</version>
+            <version>4.6.0</version>
         </dependency>
         <dependency>
             <groupId>org.jahia.modules</groupId>
             <artifactId>bootstrap4-components</artifactId>
-            <version>4.5.0</version>
+            <version>4.6.0</version>
         </dependency>
     </dependencies>
     <build>
