@@ -38,95 +38,100 @@ JCRTemplate.getInstance().doExecuteWithSystemSession(null, Constants.EDIT_WORKSP
                         }
                         // only rename if needed
                         if (! ''.equals(newListName) && !newListName.equals(currentListName)) {
-                            logger.info("  - Rename [" + currentListName + "] to [" + newListName + "] " + listPath);
-                            if (hasPendingModifications(listNode)) {
-                                nodesToManuelPublish.add(listNode.getIdentifier());
+                            if (! newListName.startsWith("main") && ! newListName.startsWith("side") && ! newListName.startsWith("extra") && ! newListName.startsWith("col")) {
+                                logger.info("  - Found a ghost node for path " + listNode.getPath() + " Check if you can remove it.");
                             } else {
-                                nodesToAutoPublish.add(listNode.getIdentifier());
-                            }
-                            // First check if new list exists
-                            String newListPath = listNode.getParent().getPath() + "/" + newListName;
-                            logger.info("     - Check if list [" + newListName + "] exists and if it's empty for path " + newListPath);
-                            try {
-                                JCRNodeWrapper newListNode = session.getNode(newListPath);
-                                // Check if new list is NOT empty.
-                                JCRNodeIteratorWrapper subNewNodesIterator = newListNode.getNodes();
-                                if (subNewNodesIterator.hasNext()) {
-                                    // New list is not empty -> move content from old to new
-                                    logger.info("     - List " + newListPath + " is NOT empty. We need to move [" + currentListName + "] subnode to the new list [" + newListName + "]");
-                                    try {
-                                        JCRNodeIteratorWrapper subNodesToMoveIterator = listNode.getNodes();
-                                        while (subNodesToMoveIterator.hasNext()) {
-                                            JCRNodeWrapper subNodeToMove = (JCRNodeWrapper) subNodesToMoveIterator.nextNode();
-                                            String subNodeName = subNodeToMove.getName();
-                                            String oldPath = listPath + "/" + subNodeName;
-                                            String newPath = newListPath + "/" + subNodeName;
-                                            logger.info("     - Move " + oldPath + " to " + newPath);
-                                            if (doIt) {
-                                                try {
-                                                    session.move(oldPath, newPath)
-                                                    session.save();
-                                                } catch (Exception xx) {
-                                                    logger.info("Error: " + xx.getMessage());
+                                logger.info("  - Rename [" + currentListName + "] to [" + newListName + "] " + listPath);
+                                if (hasPendingModifications(listNode)) {
+                                    nodesToManuelPublish.add(listNode.getIdentifier());
+                                } else {
+                                    nodesToAutoPublish.add(listNode.getIdentifier());
+                                }
+                                // First check if new list exists
+                                String newListPath = listNode.getParent().getPath() + "/" + newListName;
+                                logger.info("     - Check if list [" + newListName + "] exists and if it's empty for path " + newListPath);
+                                try {
+                                    JCRNodeWrapper newListNode = session.getNode(newListPath);
+                                    // Check if new list is NOT empty.
+                                    JCRNodeIteratorWrapper subNewNodesIterator = newListNode.getNodes();
+                                    if (subNewNodesIterator.hasNext()) {
+                                        // New list is not empty -> move content from old to new
+                                        logger.info("     - List " + newListPath + " is NOT empty. We need to move [" + currentListName + "] subnode to the new list [" + newListName + "]");
+                                        try {
+                                            JCRNodeIteratorWrapper subNodesToMoveIterator = listNode.getNodes();
+                                            while (subNodesToMoveIterator.hasNext()) {
+                                                JCRNodeWrapper subNodeToMove = (JCRNodeWrapper) subNodesToMoveIterator.nextNode();
+                                                String subNodeName = subNodeToMove.getName();
+                                                String oldPath = listPath + "/" + subNodeName;
+                                                String newPath = newListPath + "/" + subNodeName;
+                                                logger.info("     - Move " + oldPath + " to " + newPath);
+                                                if (doIt) {
+                                                    try {
+                                                        session.move(oldPath, newPath)
+                                                        session.save();
+                                                    } catch (Exception xx) {
+                                                        logger.info("Error: " + xx.getMessage());
+                                                    }
                                                 }
                                             }
+                                            logger.info("     - Remove old list " + listPath);
+                                            try {
+                                                if (doIt) {
+                                                    session.removeItem(listNode.listPath);
+                                                    session.save();
+                                                }
+                                            } catch (javax.jcr.ItemNotFoundException ex) {
+                                                logger.info(ex.getMessage());
+                                            }
+                                        } catch (RepositoryException re) {
+                                            logger.info("Error. Could not get subnodes of " + listPath);
                                         }
-                                        logger.info("     - Remove old list " + listPath);
+
+                                    } else {
+                                        // New list is empty -> remove the new one then rename the old.
+                                        logger.info("     - List " + newListPath + " is empty. Remove it then rename the old one.")
                                         try {
+                                            logger.info("     - Remove " + newListPath);
                                             if (doIt) {
-                                                session.removeItem(listPath);
+                                                session.removeItem(newListPath);
                                                 session.save();
+                                            }
+                                            try {
+                                                logger.info("     - Rename " + listPath + " to " + newListPath);
+                                                if (doIt) {
+                                                    session.move(listPath, newListPath)
+                                                    session.save();
+                                                }
+                                            } catch (javax.jcr.PathNotFoundException pnfe) {
+                                                logger.info("     - Could not find  " + listPath + " " + pnfe.printStackTrace());
+                                            } catch (RepositoryException re) {
+                                                logger.info("     - Unable to rename " + listPath + " " + re.printStackTrace());
                                             }
                                         } catch (javax.jcr.ItemNotFoundException ex) {
-                                            logger.info(ex.getMessage());
+                                            logger.info("     - Unable to remove " + listPath + " " + ex.printStackTrace());
                                         }
-                                    } catch (RepositoryException re) {
-                                        logger.info("Error. Could not get subnodes of " + listPath);
                                     }
 
-                                } else {
-                                    // New list is empty -> remove the new one then rename the old.
-                                    logger.info("     - List " + newListPath + " is empty. Remove it then rename the old one.")
-                                    try {
-                                        logger.info("     - Remove " + newListPath);
-                                        if (doIt) {
-                                            session.removeItem(newListPath);
-                                            session.save();
-                                        }
+
+
+                                } catch (javax.jcr.PathNotFoundException pnfe) {
+                                    // New list do not exist. Let's do a simple rename
+                                    //logger.info("     - List " + newListPath + " does not exist.");
+                                    logger.info("     - Rename " + listPath + " to " + newListPath);
+                                    if (doIt) {
                                         try {
-                                            logger.info("     - Rename " + listPath + " to " + newListPath);
-                                            if (doIt) {
-                                                session.move(listPath, newListPath)
-                                                session.save();
-                                            }
-                                        } catch (javax.jcr.PathNotFoundException pnfe) {
-                                            logger.info("     - Could not find  " + listPath + " " + pnfe.printStackTrace());
-                                        } catch (RepositoryException re) {
-                                            logger.info("     - Unable to rename " + listPath + " " + re.printStackTrace());
+                                            session.move(listPath,newListPath);
+                                            session.save();
+                                        } catch (Exception e) {
+                                            logger.info("Error: " + e.getMessage());
                                         }
-                                    } catch (javax.jcr.ItemNotFoundException ex) {
-                                        logger.info("     - Unable to remove " + listPath + " " + ex.printStackTrace());
                                     }
+
+                                } catch (RepositoryException re) {
+                                    logger.info("Error, could not found " + newListPath);
                                 }
-
-
-
-                            } catch (javax.jcr.PathNotFoundException pnfe) {
-                                // New list do not exist. Let's do a simple rename
-                                //logger.info("     - List " + newListPath + " does not exist.");
-                                logger.info("     - Rename " + listPath + " to " + newListPath);
-                                if (doIt) {
-                                    try {
-                                        session.move(listPath,newListPath);
-                                        session.save();
-                                    } catch (Exception e) {
-                                        logger.info("Error: " + e.getMessage());
-                                    }
-                                }
-
-                            } catch (RepositoryException re) {
-                                logger.info("Error, could not found " + newListPath);
                             }
+
                         }
                     } else {
                         logger.info("Error grid " + listPath + " isnot of type jcr:contentList");
