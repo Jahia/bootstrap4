@@ -8,9 +8,11 @@ import javax.jcr.query.Query
 
 def logger = log;
 //Boolean doIt = false;
+//Boolean removeGhosts = false;
 
 Set<String> nodesToAutoPublish = new HashSet<String>();
 Set<String> nodesToManuelPublish = new HashSet<String>();
+Set<String> ghostsToRemove = new HashSet<String>();
 JCRTemplate.getInstance().doExecuteWithSystemSession(null, Constants.EDIT_WORKSPACE, new JCRCallback<Object>() {
     @Override
     public Object doInJCR(JCRSessionWrapper session) throws RepositoryException {
@@ -40,6 +42,9 @@ JCRTemplate.getInstance().doExecuteWithSystemSession(null, Constants.EDIT_WORKSP
                         if (! ''.equals(newListName) && !newListName.equals(currentListName)) {
                             if (! newListName.startsWith("main") && ! newListName.startsWith("side") && ! newListName.startsWith("extra") && ! newListName.startsWith("col")) {
                                 logger.info("  - Found a ghost node for path " + listNode.getPath() + " Check if you can remove it.");
+                                if (removeGhosts) {
+                                    ghostsToRemove.add(listNode.getPath());
+                                }
                             } else {
                                 logger.info("  - Rename [" + currentListName + "] to [" + newListName + "] " + listPath);
                                 if (hasPendingModifications(listNode)) {
@@ -159,10 +164,55 @@ JCRTemplate.getInstance().doExecuteWithSystemSession(null, Constants.EDIT_WORKSP
                 logger.warn("   " + identifier + " " + session.getNodeByIdentifier(identifier).getPath());
             }
         }
-        return null;
+
+
+            return null;
     }
 
 });
+
+
+if (removeGhosts) {
+    if (CollectionUtils.isNotEmpty(ghostsToRemove)) {
+        logger.info("");
+        logger.info("Remove ghosts from default");
+        JCRTemplate.getInstance().doExecuteWithSystemSession(null, Constants.EDIT_WORKSPACE, new JCRCallback<Object>() {
+            @Override
+            public Object doInJCR(JCRSessionWrapper session) throws RepositoryException {
+                for (String path : ghostsToRemove) {
+                    logger.warn("   Remove " + path);
+                    try {
+                        if (doIt) {
+                            session.removeItem(path);
+                            session.save();
+                        }
+                    } catch (javax.jcr.ItemNotFoundException ex) {
+                        logger.info(ex.getMessage());
+                    }
+                }
+            }
+        });
+        logger.info("Remove ghosts from live");
+        JCRTemplate.getInstance().doExecuteWithSystemSession(null, Constants.LIVE_WORKSPACE, new JCRCallback<Object>() {
+            @Override
+            public Object doInJCR(JCRSessionWrapper session) throws RepositoryException {
+                for (String path : ghostsToRemove) {
+                    logger.warn("   Remove " + path);
+                    try {
+                        if (doIt) {
+                            session.removeItem(path);
+                            session.save();
+                        }
+                    } catch (javax.jcr.ItemNotFoundException ex) {
+                        logger.info(ex.getMessage());
+                    }
+                }
+            }
+        });
+
+
+    }
+}
 
 private void renameGrid(String name, JCRNodeWrapper node, JCRSessionWrapper session, boolean doIt) {
 
