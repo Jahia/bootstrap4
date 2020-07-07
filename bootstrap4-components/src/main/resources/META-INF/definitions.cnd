@@ -3,6 +3,8 @@
 <jnt = 'http://www.jahia.org/jahia/nt/1.0'>
 <jmix = 'http://www.jahia.org/jahia/mix/1.0'>
 <mix = 'http://www.jcp.org/jcr/mix/1.0'>
+<html5mix = 'http://www.jahia.org/html5/mix/1.0'>
+<html5nt = 'http://www.jahia.org/html5/nt/1.0'>
 
 [bootstrap4mix:predefinedGrid] > jmix:templateMixin mixin
  extends = bootstrap4nt:grid
@@ -265,3 +267,46 @@
 
 // need to keep this mixin for compatibility issue...
 [bootstrap4mix:borderRadius] mixin
+
+
+
+
+[html5mix:htmlAttrCustom] mixin
+ - id (string) indexed=no < '[a-zA-Z0-9-_]+'
+ - cssClass (string) indexed=no
+ - style (string) indexed=no
+ - role (string) indexed=no
+ - aria (string) indexed=no
+
+[html5nt:div] > jnt:content, html5mix:htmlAttrCustom, jmix:list, html5mix:html5Components
+ + * (jmix:droppableContent)  = jmix:droppableContent
+
+[html5nt:section] > jnt:content, html5mix:htmlAttrCustom, html5mix:html5Components, jmix:list
+ + * (jmix:droppableContent)  = jmix:droppableContent
+
+[html5nt:article] > jnt:content, html5mix:htmlAttrCustom, html5mix:html5Components, jmix:list
+ + * (jmix:droppableContent)  = jmix:droppableContent
+
+[html5nt:main] > jnt:content, html5mix:htmlAttrCustom, html5mix:html5Components, jmix:list
+ + * (jmix:droppableContent)  = jmix:droppableContent
+
+[html5nt:aside] > jnt:content, html5mix:htmlAttrCustom, html5mix:html5Components, jmix:list
+ + * (jmix:droppableContent)  = jmix:droppableContent
+
+[html5nt:nav] > jnt:content, html5mix:htmlAttrCustom, html5mix:html5Components, jmix:list
+ + * (jmix:droppableContent)  = jmix:droppableContent
+
+[html5nt:header] > jnt:content, html5mix:htmlAttrCustom, html5mix:html5Components, jmix:list
+ + * (jmix:droppableContent)  = jmix:droppableContent
+
+[html5nt:footer] > jnt:content, html5mix:htmlAttrCustom, html5mix:html5Components, jmix:list
+ + * (jmix:droppableContent)  = jmix:droppableContent
+
+[html5nt:figure] > jnt:content, html5mix:htmlAttrCustom, html5mix:html5Components, jmix:list
+ + * (jmix:droppableContent)  = jmix:droppableContent
+
+[html5nt:figcaption] > jnt:content, html5mix:htmlAttrCustom, html5mix:html5Components, jmix:list
+ + * (jmix:droppableContent)  = jmix:droppableContent
+
+[html5nt:hgroup] > jnt:content, html5mix:htmlAttrCustom, html5mix:html5Components, jmix:list
+ + * (jmix:droppableContent)  = jmix:droppableContent
