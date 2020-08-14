@@ -34,7 +34,8 @@
 </c:if>
 <c:choose>
     <c:when test="${fn:length(pageNodes) > 1}">
-        <ol class="breadcrumb ${cssClass}">
+        <fmt:message key="bootstrap4nt_breadcrumb" var="breadcrumb"/>
+        <ol class="breadcrumb ${cssClass}" label="${fn:escapeXml(breadcrumb)}">
             <c:forEach items="${functions:reverse(pageNodes)}" var="pageNode" varStatus="status">
                 <c:choose>
                     <c:when test="${jcr:findDisplayableNode(pageNode, renderContext) ne pageNode}">
@@ -45,7 +46,7 @@
                                 value="${pageNode.displayableName}"/></a></li>
                     </c:when>
                     <c:otherwise>
-                        <li class="breadcrumb-item active"><c:out value="${pageNode.displayableName}"/></li>
+                        <li class="breadcrumb-item active" aria-current="page"><c:out value="${pageNode.displayableName}"/></li>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
