@@ -263,3 +263,9 @@
 
 // need to keep this mixin for compatibility issue...
 [bootstrap4mix:borderRadius] mixin
+
+
+[bootstrap4mix:alert] > jmix:templateMixin mixin
+ extends = jmix:droppableContent
+ itemtype = layout
+ - backgroundColor (string, choicelist[resourceBundle])  = 'primary' autocreated indexed=no < 'primary', 'secondary', 'success', 'info', 'warning', 'danger', 'link','dark','light','custom'
