@@ -47,6 +47,11 @@
  - gridType (string) hidden
  + * (jmix:droppableContent)  = jmix:droppableContent
 
+[bootstrap4mix:listLimit] mixin
+ extends = bootstrap4nt:grid
+ itemtype = content
+ - listLimit (string, choicelist[resourceBundle])  = '-1' autocreated indexed=no < '-1', '1', '2', '3', '4', '5', '10'
+
 [bootstrap4mix:hasPadding] mixin
 
 [bootstrap4mix:padding] mixin
