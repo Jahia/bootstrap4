@@ -26,6 +26,13 @@
 <c:set var="createAbsoluteAreas" value="${jcr:isNodeType(currentNode, 'bootstrap4mix:createAbsoluteAreas')}"/>
 <c:set var="moduleType" value="${createAbsoluteAreas? 'absoluteArea' : 'area'}"/>
 <c:set var="level" value="${createAbsoluteAreas? currentNode.properties.level.string : '0'}" />
+<c:if test="${jcr:isNodeType(currentNode, 'bootstrap4mix:listLimit')}">
+    <c:set var="listLimit" value="${currentNode.properties.listLimit.string}"/>
+</c:if>
+<c:if test="${empty listLimit}">
+    <c:set var="listLimit" value="-1"/>
+</c:if>
+
 <c:if test="${createAbsoluteAreas && renderContext.editModeConfigName eq 'studiomode'}">
     <c:set var="displayAbsoluteArea">
         <div class="card text-white bg-danger mb-3">
@@ -47,8 +54,9 @@
     <c:when test="${not empty columns}">
         <c:forTokens items="${columns}" delims="," varStatus="status" var="col">
             <div class="${fn:trim(col)}">${displayAbsoluteArea}
+                <c:if test="${! empty listLimit}"></c:if>
                 <template:area path="${colNamePrefix}col${status.index}"
-                               areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/>
+                               areaAsSubNode="true" moduleType="${moduleType}" level="${level}" listLimit="${listLimit}" />
             </div>
         </c:forTokens>
     </c:when>
