@@ -8,5 +8,4 @@
 [bootstrap4mix:component] > jmix:droppableContent, jmix:editorialContent mixin
 [bootstrap4nt:version] > jnt:content, bootstrap4mix:component
 
-[bootstrap4mix:bootstrap4NewComponents] > jmix:droppableContent, jmix:editorialContent mixin
 [html5mix:html5Components] > jmix:droppableContent, jmix:editorialContent mixin
