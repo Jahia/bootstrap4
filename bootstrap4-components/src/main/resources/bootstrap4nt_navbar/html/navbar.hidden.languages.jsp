@@ -10,6 +10,7 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
+<c:set var="mainResourceNode" value="${renderContext.mainResource.node}"/>
 
 <c:catch var="errorLanguages">
     <ui:initLangBarAttributes activeLanguagesOnly="${renderContext.liveMode}"/>
@@ -35,7 +36,6 @@
                     </c:if>
                 </c:forEach>
             </div>
-
         </div>
     </c:if>
 </c:catch>
