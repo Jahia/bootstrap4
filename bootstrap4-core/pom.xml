@@ -30,8 +30,21 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
   <name>Bootstrap 4 Core</name>
   <description>This module provide the Bootstrap 4 assets for Jahia</description>
   <properties>
-    <jahia-depends>default,jquery,popperjs</jahia-depends>
-    <Jahia-Module-Priority>2</Jahia-Module-Priority>
     <jahia-module-signature>MC0CFHRzJGwsM02eNgxCZqO0lLXNulniAhUAlqi4J7r3Ys1pwm73u/TXlbhgdls=</jahia-module-signature>
   </properties>
-</project>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <jahia-depends>default,jquery,popperjs</jahia-depends>
+            <Jahia-Module-Priority>2</Jahia-Module-Priority>
+          </instructions>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  </project>
