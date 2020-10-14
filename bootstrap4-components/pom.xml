@@ -30,9 +30,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
   <name>Bootstrap 4 Components</name>
   <description>This module provide a Bootstrap 4 implementation of http://getbootstrap.com for Jahia</description>
   <properties>
-    <Jahia-Module-Priority>1</Jahia-Module-Priority>
-    <jahia-depends>bootstrap4-core,default,jquery,popperjs</jahia-depends>
-    <version.compiler.plugin>3.3</version.compiler.plugin>
+     <version.compiler.plugin>3.3</version.compiler.plugin>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
@@ -51,6 +49,8 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
         <extensions>true</extensions>
         <configuration>
           <instructions>
+            <Jahia-Module-Priority>1</Jahia-Module-Priority>
+            <jahia-depends>bootstrap4-core,default,jquery,popperjs,skins</jahia-depends>
             <_dsannotations>
               org.jahia.modules.bootstrap4.initializers.*
             </_dsannotations>

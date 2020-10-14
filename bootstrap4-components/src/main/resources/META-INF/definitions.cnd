@@ -47,6 +47,11 @@
  - gridType (string) hidden
  + * (jmix:droppableContent)  = jmix:droppableContent
 
+[bootstrap4mix:listLimit] mixin
+ extends = bootstrap4nt:grid
+ itemtype = content
+ - listLimit (string, choicelist[resourceBundle])  = '-1' autocreated indexed=no < '-1', '1', '2', '3', '4', '5', '10'
+
 [bootstrap4mix:hasPadding] mixin
 
 [bootstrap4mix:padding] mixin
@@ -182,10 +187,9 @@
  - textAlign (string, choicelist[resourceBundle])  = 'text-center' autocreated indexed=no < 'text-left', 'text-right', 'text-center'
  - carouselItemClass (string) indexed=no
 
-[bootstrap4nt:carouselItem] > jnt:content, mix:title, jmix:list orderable
+[bootstrap4nt:carouselItem] > jnt:content, mix:title
  - image (weakreference, picker[type='image']) mandatory < 'jmix:image'
  - caption (string, textarea) i18n
- + * (jmix:droppableContent)  = jmix:droppableContent
 
 [bootstrap4mix:carouselAdvancedSettings] mixin
  extends = bootstrap4nt:carousel
@@ -265,3 +269,10 @@
 
 // need to keep this mixin for compatibility issue...
 [bootstrap4mix:borderRadius] mixin
+
+
+[bootstrap4mix:alert] > jmix:templateMixin mixin
+ extends = jmix:droppableContent
+ itemtype = layout
+ - backgroundColor (string, choicelist[resourceBundle])  = 'primary' autocreated indexed=no < 'primary', 'secondary', 'success', 'info', 'warning', 'danger', 'link','dark','light','custom'
+ - addDismissButton (boolean)  = 'false' indexed=no

@@ -10,17 +10,18 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
+<c:set var="mainResourceNode" value="${renderContext.mainResource.node}"/>
 
 <c:catch var="errorLanguages">
     <ui:initLangBarAttributes activeLanguagesOnly="${renderContext.liveMode}"/>
     <c:set var="languageCodes" value="${requestScope.languageCodes}"/>
     <c:if test="${fn:length(languageCodes)>1}">
-        <div class="dropdown navbar-nav">
+        <div class="dropdown navbar-nav language-nav">
             <a href="#" class="dropdown-toggle nav-link" id="languageSwitchButton" data-toggle="dropdown" aria-haspopup="true"
-               aria-expanded="false">
+               aria-expanded="false" aria-label="<fmt:message key='bootstrap4nt_navbarnavbar.label.change'/>" aria-owns="language-menu">
                     ${fn:toUpperCase(renderContext.mainResourceLocale.language)}
             </a>
-            <div class="dropdown-menu" aria-labelledby="languageSwitchButton">
+            <div class="dropdown-menu" aria-labelledby="languageSwitchButton" role="menu" id="language-menu">
                 <c:set var="invalidLanguages" value=""/>
                 <c:catch var="e">
                     <c:if test="${! empty mainResourceNode.properties['j:invalidLanguages']}">
