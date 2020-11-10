@@ -43,7 +43,7 @@
  itemtype = content
  - level (string, choicelist[resourceBundle])  = '0' autocreated indexed=no < '0', '1', '2', '3', '4', '5'
 
-[bootstrap4nt:grid] > jnt:content, bootstrap4mix:component, jmix:list
+[bootstrap4nt:grid] > jnt:content, bootstrap4mix:component, jmix:list, jmix:browsableInEditorialPicker
  - gridType (string) hidden
  + * (jmix:droppableContent)  = jmix:droppableContent
 
@@ -99,7 +99,7 @@
  - mediaObjectStyle (string) indexed=no
  - mediaObjectID (string) indexed=no
 
-[bootstrap4nt:mediaObject] > jnt:content, bootstrap4mix:component, jmix:list, bootstrap4mix:imageAdvanced, bootstrap4mix:hasMargin
+[bootstrap4nt:mediaObject] > jnt:content, bootstrap4mix:component, jmix:list, bootstrap4mix:imageAdvanced, bootstrap4mix:hasMargin, jmix:browsableInEditorialPicker
  + * (jmix:droppableContent)  = jmix:droppableContent
 
 [bootstrap4mix:figureAdvancedSettings] mixin
@@ -134,7 +134,7 @@
  - state (string, choicelist[resourceBundle])  = 'default' autocreated indexed=no < 'default', 'active', 'disabled'
  - cssClass (string) indexed=no
 
-[bootstrap4mix:collapse] > jmix:templateMixin mixin orderable
+[bootstrap4mix:collapse] > jmix:templateMixin, jmix:browsableInEditorialPicker mixin orderable
  extends = bootstrap4nt:button
  + * (jmix:droppableContent)  = jmix:droppableContent
 
@@ -146,7 +146,7 @@
  extends = bootstrap4nt:button
  - externalLink (string)  = 'http://'
 
-[bootstrap4mix:modal] > jmix:templateMixin mixin orderable
+[bootstrap4mix:modal] > jmix:templateMixin, jmix:browsableInEditorialPicker mixin orderable
  extends = bootstrap4nt:button
  - modalTitle (string) i18n
  - closeText (string)  = 'Close' i18n
@@ -166,7 +166,7 @@
  - textColor (string, choicelist[resourceBundle])  = 'dark' autocreated indexed=no < 'muted','primary','secondary','success','danger','warning','info','light','dark','white','body','black-50','white-50'
  - borderColor (string, choicelist[resourceBundle])  = 'default' autocreated indexed=no < 'default','primary','secondary','success','danger','warning','info','light','dark','white'
 
-[bootstrap4nt:card]> jnt:content, bootstrap4mix:component, mix:title, jmix:list, bootstrap4mix:image
+[bootstrap4nt:card]> jnt:content, bootstrap4mix:component, mix:title, jmix:list, bootstrap4mix:image, jmix:browsableInEditorialPicker
  - headerSize (string, choicelist[resourceBundle])  = 'default' autocreated indexed=no < 'default', 'h1', 'h2', 'h3', 'h4', 'h5'
  - textAlign (string, choicelist[resourceBundle])  = 'text-left' autocreated indexed=no < 'text-left', 'text-right', 'text-center'
  - footer (string) i18n
@@ -204,7 +204,7 @@
  - fade (boolean)  = 'true' indexed=no
  - carouselClass (string) indexed=no
 
-[bootstrap4nt:carousel] > jnt:content, bootstrap4mix:component, jmix:list, jmix:siteContent orderable
+[bootstrap4nt:carousel] > jnt:content, bootstrap4mix:component, jmix:list, jmix:siteContent, jmix:browsableInEditorialPicker orderable
  + * (bootstrap4nt:carouselItem)
 
 [bootstrap4mix:advancedPagination] mixin
@@ -260,7 +260,7 @@
 [bootstrap4nt:navbar] > jnt:content, bootstrap4mix:component, jmix:navMenuComponent
  - root (string, choicelist[navbarRootInitializer,resourceBundle])  = 'homePage' autocreated indexed=no   < 'homePage', 'currentPage', 'parentPage','customRootPage'
 
-[bootstrap4nt:tabs] > jnt:content, bootstrap4mix:component, jmix:manuallyOrderable, jmix:list, jmix:siteContent orderable
+[bootstrap4nt:tabs] > jnt:content, bootstrap4mix:component, jmix:manuallyOrderable, jmix:list, jmix:siteContent, jmix:browsableInEditorialPicker orderable
  - type (string, choicelist[resourceBundle, moduleImage='png'])  = 'tab' autocreated indexed=no < 'tab', 'pill','link'
  - fade (boolean)  = 'true' autocreated indexed=no
  - align (string, choicelist[resourceBundle])  = 'justify-content-start' indexed=no < 'justify-content-start', 'justify-content-center', 'justify-content-end', 'nav-fill', 'nav-justified'
