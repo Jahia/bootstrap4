@@ -40,7 +40,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
         <extensions>true</extensions>
         <configuration>
           <instructions>
-            <jahia-depends>default,jquery,popperjs</jahia-depends>
+            <Jahia-Depends>default,jquery,popperjs</Jahia-Depends>
             <Jahia-Module-Priority>2</Jahia-Module-Priority>
           </instructions>
         </configuration>
