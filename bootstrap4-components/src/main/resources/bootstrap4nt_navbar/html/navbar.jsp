@@ -85,11 +85,18 @@
         <div class="container">
     </c:if>
     <c:choose>
-        <c:when test="${jcr:isNodeType(rootNode, 'jnt:virtualsite')}">
-            <c:url var="rootNodeUrl" value="${renderContext.site.home.url}"/>
+        <c:when test="${fn:startsWith(currentNode.path,'/modules') || renderContext.editModeConfigName eq 'studiomode'}">
+            <c:url var="rootNodeUrl" value="${rootNode.url}"/>
         </c:when>
         <c:otherwise>
-            <c:url var="rootNodeUrl" value="${rootNode.url}"/>
+            <c:choose>
+                <c:when test="${jcr:isNodeType(rootNode, 'jnt:virtualsite')}">
+                    <c:url var="rootNodeUrl" value="${renderContext.site.home.url}"/>
+                </c:when>
+                <c:otherwise>
+                    <c:url var="rootNodeUrl" value="${rootNode.url}"/>
+                </c:otherwise>
+            </c:choose>
         </c:otherwise>
     </c:choose>
 
