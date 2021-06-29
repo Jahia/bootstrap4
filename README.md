@@ -10,7 +10,9 @@ If you update the Bootstrap 4 modules to v4.6.0, please read the dedicated part 
 
 You can also install the Bootstrap 4 package that comes with all dependencies.   
   
-## List of components : ### Breadcrumb  
+## List of components : 
+
+### Breadcrumb  
 Indicate the current page’s location within a navigational hierarchy  
   
 ### Button  
