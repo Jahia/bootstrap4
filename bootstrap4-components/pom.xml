@@ -50,7 +50,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
         <configuration>
           <instructions>
             <Jahia-Module-Priority>1</Jahia-Module-Priority>
-            <jahia-depends>bootstrap4-core,default,jquery,popperjs,skins</jahia-depends>
+            <Jahia-Depends>bootstrap4-core,default,jquery,popperjs,skins</Jahia-Depends>
             <_dsannotations>
               org.jahia.modules.bootstrap4.initializers.*
             </_dsannotations>
