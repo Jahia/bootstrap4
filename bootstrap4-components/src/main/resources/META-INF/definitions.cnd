@@ -140,7 +140,7 @@
 
 [bootstrap4mix:internalLink] > jmix:templateMixin mixin
  extends = bootstrap4nt:button
- - internalLink (weakreference, picker[type='editoriallink']) < jmix:droppableContent, jnt:page, jnt:file
+ - internalLink (weakreference, picker[type='pagesandfiles']) < jmix:droppableContent, jnt:page, jnt:file
 
 [bootstrap4mix:externalLink] > jmix:templateMixin mixin
  extends = bootstrap4nt:button
