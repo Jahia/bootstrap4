@@ -22,6 +22,6 @@
 
 <c:if test="${renderContext.editMode}">
     <div class="alert alert-info">
-        This page is running <a href="http://getbootstrap.com/" class="alert-link">Bootstrap v4.6.0</a>
+        This page is running <a href="http://getbootstrap.com/" class="alert-link">Bootstrap v4.6.1</a>
     </div>
 </c:if>
