@@ -23,7 +23,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
   <parent>
     <groupId>org.jahia.modules</groupId>
     <artifactId>bootstrap4-modules</artifactId>
-    <version>4.6.8-SNAPSHOT</version>
+    <version>4.6.8</version>
   </parent>
   <artifactId>bootstrap4-components</artifactId>
   <packaging>bundle</packaging>
