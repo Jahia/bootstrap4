@@ -8,7 +8,7 @@
     </parent>
     <artifactId>bootstrap4-package</artifactId>
     <name>Bootstrap 4 Package</name>
-    <version>4.6.7</version>
+    <version>4.6.8</version>
     <packaging>pom</packaging>
     <description>Parent project to package all Bootstrap 4 related components.</description>
     <properties>
@@ -43,12 +43,12 @@
         <dependency>
             <groupId>org.jahia.modules</groupId>
             <artifactId>bootstrap4-core</artifactId>
-            <version>4.6.7</version>
+            <version>c</version>
         </dependency>
         <dependency>
             <groupId>org.jahia.modules</groupId>
             <artifactId>bootstrap4-components</artifactId>
-            <version>4.6.7</version>
+            <version>4.6.8</version>
         </dependency>
     </dependencies>
     <build>
