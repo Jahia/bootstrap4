@@ -1,6 +1,14 @@
 
-Bootstrap 4 This is a Bootstrap 4 implementation of http://getbootstrap.com for Digital Experience Manager. This version is not compliant with the official bootstrap 3.  
-  
+Bootstrap 4 This is a Bootstrap 4 implementation of http://getbootstrap.com for Digital Experience Manager. This version is not compliant with the official bootstrap 3.
+
+## Accessibility
+
+All components target **WCAG 2.1 Level AA** conformance. This includes semantic landmark regions, keyboard navigation, ARIA roles and labels, accessible carousels with pause/play controls (WCAG 2.2.2), focus management, and screen-reader-compatible form and navigation patterns.
+
+## Architecture
+
+This module uses **OSGi Declarative Services** exclusively. There is no Spring application context and no Blueprint extender dependency. Service components (choice list initializers) are registered via `@Component` annotations scanned by the Felix maven-bundle-plugin.
+
 ## WARNING: Migration to Bootstrap 4 v4.6.0
 If you update the Bootstrap 4 modules to v4.6.0, please read the dedicated part [below](#migration-to-bootstrap-4-v460)
 
@@ -45,6 +53,9 @@ The navbar provides simple navigation for your site
 ### Pagination  
 Pagination links indicate a series of related content exists across multiple pages.  
   
+### Tabs
+Toggleable tabs for displaying grouped content panels.
+
 ### Text  
 This component provides bootstrap 4 styles and CK templates  
   
