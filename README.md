@@ -2,7 +2,7 @@
 Bootstrap 4 This is a Bootstrap 4 implementation of http://getbootstrap.com for Digital Experience Manager. This version is not compliant with the official bootstrap 3.
 
 > [!WARNING]
-> **Bootstrap 4 reached end of life on January 1, 2023.** It no longer receives features, updates, or security fixes. We strongly recommend migrating to [Bootstrap 5](https://getbootstrap.com/docs/5.3/migration/), which drops the jQuery dependency, improves accessibility, and adds native dark mode support. For teams unable to migrate immediately, commercial long-term support is available via [HeroDevs NES](https://www.herodevs.com/support/nes-bootstrap).
+> **The Bootstrap 4 framework (CSS/JS assets) reached end of life on January 1, 2023.** It no longer receives features, updates, or security fixes. We strongly recommend migrating to [Bootstrap 5](https://github.com/jahia/bootstrap5/).
 
 ## Accessibility
 
