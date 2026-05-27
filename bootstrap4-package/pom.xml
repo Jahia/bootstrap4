@@ -19,7 +19,7 @@
         <jahia.manifest.description>popperjs, bootstrap4-core, bootstrap4-components</jahia.manifest.description>
         <jahia.manifest.license>org.jahia.core</jahia.manifest.license>
         <jahia.required.version>8.2.0.0</jahia.required.version>
-        <jahia-module-signature>MCwCFDiKLX+AhiXO63qdS+s+L19t2U+YAhQjeR8aTnbvsQmwhP6MVbdKBtjo1w==</jahia-module-signature>
+        <jahia-module-signature>MCwCFAFnjc5bo41xepe165lJRAN4WYojAhRKbbK+wdI+yM6LmEnBM1nh3BCeVw==</jahia-module-signature>
     </properties>
     <repositories>
         <repository>
