@@ -41,7 +41,7 @@
 <c:if test="${empty keyboard}">
     <c:set var="keyboard" value="true"/>
 </c:if>
-<c:if test="${empty ride}">
+<c:if test="${empty wrap}">
     <c:set var="wrap" value="true"/>
 </c:if>
 <c:if test="${empty fade}">
@@ -85,11 +85,10 @@
                 <fmt:message key="bootstrap4nt_carousel.goToSlide" var="goToSlideLabel">
                     <fmt:param value="${status.index + 1}"/>
                 </fmt:message>
-                <li>
+                <li class="${status.first ? 'active' : ''}">
                     <button type="button"
                             data-target="#carousel_${currentNode.identifier}"
                             data-slide-to="${status.index}"
-                            class="${status.first ? 'active' : ''}"
                             aria-label="${fn:escapeXml(goToSlideLabel)}"
                             <c:if test="${status.first}">aria-current="true"</c:if>>
                     </button>
@@ -131,7 +130,9 @@
                 id="carousel-pause-${currentNode.identifier}"
                 class="btn btn-sm btn-secondary position-absolute"
                 style="bottom: 1rem; right: 1rem; z-index: 15;"
-                aria-label="${fn:escapeXml(pauseLabel)}">
+                aria-label="${fn:escapeXml(pauseLabel)}"
+                data-pause-label="${fn:escapeXml(pauseLabel)}"
+                data-play-label="${fn:escapeXml(playLabel)}">
             <span aria-hidden="true">&#9646;&#9646;</span>
         </button>
     </c:if>
@@ -147,14 +148,16 @@
             var el = document.getElementById('carousel-pause-${currentNode.identifier}');
             var playing = true;
             if (!el) return;
+            var pauseLabel = el.getAttribute('data-pause-label');
+            var playLabel = el.getAttribute('data-play-label');
             el.addEventListener('click', function () {
                 if (playing) {
                     $('#carousel_${currentNode.identifier}').carousel('pause');
-                    el.setAttribute('aria-label', '${fn:escapeXml(playLabel)}');
+                    el.setAttribute('aria-label', playLabel);
                     el.innerHTML = '<span aria-hidden="true">&#9654;<\/span>';
                 } else {
                     $('#carousel_${currentNode.identifier}').carousel('cycle');
-                    el.setAttribute('aria-label', '${fn:escapeXml(pauseLabel)}');
+                    el.setAttribute('aria-label', pauseLabel);
                     el.innerHTML = '<span aria-hidden="true">&#9646;&#9646;<\/span>';
                 }
                 playing = !playing;

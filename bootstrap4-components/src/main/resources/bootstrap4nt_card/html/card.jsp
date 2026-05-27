@@ -61,7 +61,10 @@
         </template:include>
     </c:if>
     <c:if test="${! empty title}">
-        <c:set var="safeHeaderSize" value="${fn:escapeXml(headerSize)}"/>
+        <c:set var="safeHeaderSize" value="div"/>
+        <c:if test="${headerSize eq 'h1' or headerSize eq 'h2' or headerSize eq 'h3' or headerSize eq 'h4' or headerSize eq 'h5' or headerSize eq 'h6'}">
+            <c:set var="safeHeaderSize" value="${headerSize}"/>
+        </c:if>
         <${safeHeaderSize} class="card-header">${fn:escapeXml(title)}</${safeHeaderSize}>
     </c:if>
     <div class="${cardBodyCssClass}">

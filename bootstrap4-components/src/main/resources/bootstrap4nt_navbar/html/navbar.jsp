@@ -120,7 +120,7 @@
             </c:choose>
 
         </c:if>
-        ${brandText}
+        ${fn:escapeXml(brandText)}
     </a>
 
     <button class="${buttonClass}" type="button" data-toggle="collapse"

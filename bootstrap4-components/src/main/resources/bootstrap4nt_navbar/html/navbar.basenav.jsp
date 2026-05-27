@@ -103,7 +103,7 @@
                             </button>
                             <div class="dropdown-menu"
                                  aria-labelledby="navbarDropdownMen-${level1Page.identifier}">
-                                <a class="dropdown-item" href="${page1Url}">${page1Title}</a>
+                                <a class="dropdown-item" href="${page1Url}">${fn:escapeXml(page1Title)}</a>
                                 <div class="dropdown-divider"></div>
                                 <c:forEach items="${level2Pages}" var="level2Page" varStatus="status">
                                     <c:set var="displayLevel2Page" value="true"/>

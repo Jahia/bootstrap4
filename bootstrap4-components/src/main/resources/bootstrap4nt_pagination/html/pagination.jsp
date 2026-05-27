@@ -107,7 +107,7 @@
                         <a class="page-link"
                            href="${empty moduleMap.currentPage or moduleMap.currentPage le 1 ? '#' : previousUrl}"
                            aria-label="<fmt:message key='bootstrap4mix_advancedPagination.previous'/>"
-                           <c:if test="${empty moduleMap.currentPage or moduleMap.currentPage le 1}">aria-disabled="true"</c:if>>
+                           <c:if test="${empty moduleMap.currentPage or moduleMap.currentPage le 1}">aria-disabled="true" tabindex="-1"</c:if>>
                             <span aria-hidden="true">&laquo;</span>
                             <span class="sr-only"><fmt:message key="bootstrap4mix_advancedPagination.previous"/></span>
                         </a>
@@ -191,7 +191,7 @@
                     <li class="page-item${moduleMap.currentPage ge moduleMap.nbPages ? ' disabled' : ''}">
                         <a class="page-link" href="${moduleMap.currentPage ge moduleMap.nbPages ? '#' : nextUrl}"
                            aria-label="<fmt:message key='bootstrap4mix_advancedPagination.next'/>"
-                           <c:if test="${moduleMap.currentPage ge moduleMap.nbPages}">aria-disabled="true"</c:if>>
+                           <c:if test="${moduleMap.currentPage ge moduleMap.nbPages}">aria-disabled="true" tabindex="-1"</c:if>>
                             <span aria-hidden="true">&raquo;</span>
                             <span class="sr-only"><fmt:message key="bootstrap4mix_advancedPagination.next"/></span>
                         </a>
