@@ -2,12 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>bootstrap4-modules</artifactId>
-        <groupId>org.jahia.modules</groupId>
-        <version>4.7.0-SNAPSHOT</version>
+        <artifactId>jahia-packages-parent</artifactId>
+        <groupId>org.jahia.packages</groupId>
+        <version>8.2.0.0</version>
     </parent>
     <artifactId>bootstrap4-package</artifactId>
     <name>Bootstrap 4 Package</name>
+    <version>4.7.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <description>Parent project to package all Bootstrap 4 related components.</description>
     <properties>
@@ -17,6 +18,7 @@
         <jahia.manifest.package.id>Bootstrap4</jahia.manifest.package.id>
         <jahia.manifest.description>popperjs, bootstrap4-core, bootstrap4-components</jahia.manifest.description>
         <jahia.manifest.license>org.jahia.core</jahia.manifest.license>
+        <jahia.required.version>8.2.0.0</jahia.required.version>
         <jahia-module-signature>MCwCFDiKLX+AhiXO63qdS+s+L19t2U+YAhQjeR8aTnbvsQmwhP6MVbdKBtjo1w==</jahia-module-signature>
     </properties>
     <repositories>
@@ -53,25 +55,8 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-dependencies</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/dependency</outputDirectory>
-                            <includeScope>compile</includeScope>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.4.2</version>
                 <executions>
                     <execution>
                         <id>packaging-dependencies</id>
@@ -80,13 +65,20 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <attach>true</attach>
                             <descriptors>
                                 <descriptor>${jahia.package.assembly.file}</descriptor>
                             </descriptors>
+                            <attach>true</attach>
+                            <finalName>${jahia.final.package.name}-${project.version}</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
                             <archive>
                                 <manifestEntries>
-                                    <Jahia-Required-Version>8.2.0.0</Jahia-Required-Version>
+                                    <Jahia-Package-ID>${jahia.manifest.package.id}</Jahia-Package-ID>
+                                    <Jahia-Package-Name>${project.name}</Jahia-Package-Name>
+                                    <Jahia-Package-Version>${project.version}</Jahia-Package-Version>
+                                    <Jahia-Required-Version>${jahia.required.version}</Jahia-Required-Version>
+                                    <Jahia-Package-License>${jahia.manifest.license}</Jahia-Package-License>
+                                    <Jahia-Package-Description>${jahia.manifest.description}</Jahia-Package-Description>
                                 </manifestEntries>
                             </archive>
                         </configuration>
@@ -101,11 +93,50 @@
                             <descriptors>
                                 <descriptor>${jahia.package.sources.assembly.file}</descriptor>
                             </descriptors>
+                            <finalName>${jahia.final.package.name}-${project.version}-sources</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
                             <archive>
                                 <manifestEntries>
-                                    <Jahia-Required-Version>8.2.0.0</Jahia-Required-Version>
+                                    <Jahia-Package-ID>${jahia.manifest.package.id}</Jahia-Package-ID>
+                                    <Jahia-Package-Name>${project.name}</Jahia-Package-Name>
+                                    <Jahia-Package-Version>${project.version}</Jahia-Package-Version>
+                                    <Jahia-Required-Version>${jahia.required.version}</Jahia-Required-Version>
+                                    <Jahia-Package-License>${jahia.manifest.license}</Jahia-Package-License>
+                                    <Jahia-Package-Description>${jahia.manifest.description}</Jahia-Package-Description>
                                 </manifestEntries>
                             </archive>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeGroupIds>org.jahia.modules</includeGroupIds>
+                            <outputDirectory>${project.build.directory}/dependency</outputDirectory>
+                            <excludeTransitive>true</excludeTransitive>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-dependencies-sources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeGroupIds>org.jahia.modules</includeGroupIds>
+                            <outputDirectory>${project.build.directory}/sources</outputDirectory>
+                            <classifier>sources</classifier>
+                            <excludeTransitive>true</excludeTransitive>
                         </configuration>
                     </execution>
                 </executions>
