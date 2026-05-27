@@ -79,7 +79,7 @@
     </div>
     <c:if test="${not empty footer || freeFooter}">
         <div class="card-footer ${textColor}">
-                ${footer}
+                ${fn:escapeXml(footer)}
             <c:if test="${freeFooter}">
                 <template:area path="cardFooter" areaAsSubNode="true"/>
             </c:if>

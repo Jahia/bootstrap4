@@ -38,10 +38,10 @@
             </a>
             <div class="media-body">
                 <c:if test="${not empty title}">
-                    <h4 class="media-heading${' '}${titleColor}">${title}</h4>
+                    <h4 class="media-heading${' '}${titleColor}">${fn:escapeXml(title)}</h4>
                 </c:if>
                 <c:if test="${not empty caption}">
-                    <p class="${captionColor}">${caption}</p>
+                    <p class="${captionColor}">${fn:escapeXml(caption)}</p>
                 </c:if>
             </div>
         </div>
@@ -63,10 +63,10 @@
             <c:if test="${! empty title || ! empty caption}">
                 <div class="carousel-caption d-none d-md-block${carouselCaptionClass}">
                     <c:if test="${not empty title}">
-                        <h3${titleClass}>${title}</h3>
+                        <h3${titleClass}>${fn:escapeXml(title)}</h3>
                     </c:if>
                     <c:if test="${not empty caption}">
-                        <p${captionClass}>${caption}</p>
+                        <p${captionClass}>${fn:escapeXml(caption)}</p>
                     </c:if>
                 </div>
             </c:if>
