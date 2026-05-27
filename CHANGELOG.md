@@ -62,6 +62,198 @@ All components now target WCAG 2.1 Level AA conformance:
 
 ---
 
-## [4.6.8] - 2024
+## [4.6.8] - 2023-09-05
 
-See git history for previous changes.
+- Update definitions and language bundle for BACKLOG-21521 (carousel item improvements)
+
+---
+
+## [4.6.7] - 2022-08-31
+
+- Update Bootstrap assets to v4.6.2
+- Update Bootstrap assets to v4.6.1
+
+---
+
+## [4.6.6] - 2021-07-20
+
+- Add custom picker for button internal link (`pagesandfilespicker`)
+
+---
+
+## [4.6.5] - 2021-06-30
+
+- Update Bootstrap assets to v4.6.0 (QA-13554)
+- Fix navbar exception in Studio in-context mode (QA-13562, PR #25)
+- Fix issue [#23](https://github.com/Jahia/bootstrap4/issues/23)
+- Order mixins for Grid/Layout component: section → container → row → limit → absolute (PR #26)
+- Fix `Jahia-Depends` for core and components (QA-13371)
+
+---
+
+## [4.6.4] - 2020-10-14
+
+- Update Bootstrap assets to v4.5.3
+- Move `Jahia-Module-Priority` to maven-bundle-plugin instructions
+- Fix missing `mainResourceNode` declaration in language switch menu
+
+---
+
+## [4.6.3] - 2020-10-01
+
+- Add `language-nav` CSS class on language menu for easier customization (PR #14)
+- Add ARIA attributes to language menu
+- Add `listLimit` property support on grid/layout components (PR #21)
+- Add dismiss option for alert skin
+- Add alert skin: apply Bootstrap alerts to any content via the skins mechanism
+- Add `aria-current="page"` and meaningful label for breadcrumb navigation
+- Add documentation images
+
+---
+
+## [4.6.2] - 2020-08-13
+
+- Update Bootstrap assets to v4.5.2
+- Fix ghost list handling: do not rename lists not starting with `main`/`side`/`extra`/`col` (PR #18)
+- Allow removal of ghost lists in grid rename script
+- Fix grid rename script
+
+---
+
+## [4.6.1] - 2020-06-29
+
+- Add missing Groovy migration script (`grid-rename.groovy`)
+
+---
+
+## [4.6.0] - 2020-06-29
+
+- Grid area rename to allow copy/paste without losing content (PR #12) — see [Migration Guide](MIGRATION.md)
+- Grid layout: support `container-{breakpoint}` CSS classes (PR #17)
+- Navbar: add brand image for small/mobile devices
+- Navbar: allow choosing a custom root page (PR #10)
+- Navbar: add language switch button
+- Button: add `id` attribute support (PR #13)
+- Section/Grid: add `aria-label` management (PR #9)
+- Section/Grid: escape `aria-label`, `class`, `role`, and `style` attributes
+
+---
+
+## [4.5.0] - 2020-05-25
+
+- First release targeting Jahia 8 (rebase from 3.0.x branch)
+- Update Bootstrap assets to v4.5.0
+
+---
+
+## [3.0.1] - 2020-05-08
+
+- Escape `class`, `role`, and `style` attributes (XSS hardening)
+- Force toolbar at definition level (QA-12895)
+
+---
+
+## [3.0.0] - 2020-05-05
+
+- Initial Jahia 8 / DX 8 compatible release
+
+---
+
+## [2.5.4] - 2021-06-30
+
+- Update Bootstrap assets to v4.6.0
+- Fix navbar exception in Studio in-context mode
+- Fix issue [#23](https://github.com/Jahia/bootstrap4/issues/23)
+
+---
+
+## [2.5.3] - 2020-10-14
+
+- Update Bootstrap assets to v4.5.3
+- Add alert skin (dismissible alerts on any content via skins)
+- Add ARIA attributes to language menu
+- Fix language switch menu (`mainResourceNode` declaration)
+- Move `Jahia-Module-Priority` to maven-bundle-plugin instructions
+- Add `listLimit` support on grid/layout component
+
+---
+
+## [2.5.2] - 2020-08-13
+
+- Update Bootstrap assets to v4.5.2
+- Fix ghost list handling in grid rename script (PR #18)
+- Allow removal of ghost lists
+
+---
+
+## [2.5.0] - 2020-06-29
+
+- Grid area rename to allow copy/paste without losing content (PR #12) — see [Migration Guide](MIGRATION.md)
+- Grid layout: support `container-{breakpoint}` CSS classes (PR #17)
+
+---
+
+## [2.4.2] - 2020-06-24
+
+- Fix card footer area name conflict with `freeFooter` property
+- Minor typo fixes
+
+---
+
+## [2.4.1] - 2020-06-18
+
+- Navbar: add brand image for small/mobile devices
+
+---
+
+## [2.4.0] - 2020-06-09
+
+- Update Bootstrap assets to v4.5.0
+- Button: add `id` attribute support (PR #13)
+- Section/Grid: add `aria-label` management (PR #9)
+- Navbar: allow choosing a custom root page (PR #10)
+- Navbar: add language switch button
+- Section/Grid: escape `aria-label` on section grid
+
+---
+
+## [2.3.0] - 2020-01-17
+
+- Update Popper.js to v1.16.0
+- Remove Spring usage — OSGi DS only (PR #6, BACKLOG-12086)
+
+---
+
+## [2.2.2] - 2020-01-13
+
+- Fix: prevent loading Bootstrap headers twice
+
+---
+
+## [2.2.1] - 2020-01-03
+
+- Navbar: display area name conditionally (studio vs edit mode, depending on grid creation context)
+- Navbar fixes and updates
+- Add SCM configuration to POM
+
+---
+
+## [2.2.0] - 2020-01-03
+
+- Update Bootstrap assets to v4.4.1
+- Fix: do not load `bootstrap.min.js` from `jmix:list` default view (prevented conflicts in siteSettings)
+- Add missing tag declaration
+
+---
+
+## [2.0.1] - 2019-11-28
+
+- Fix: add missing resource calls
+- Improve edit mode when creating a section without row or containers
+- README updates
+
+---
+
+## [2.0.0] - 2019-11-21
+
+- Initial stable release for Jahia 7 / DX 7
