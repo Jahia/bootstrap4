@@ -1,6 +1,9 @@
 
 Bootstrap 4 This is a Bootstrap 4 implementation of http://getbootstrap.com for Digital Experience Manager. This version is not compliant with the official bootstrap 3.
 
+> [!WARNING]
+> **Bootstrap 4 reached end of life on January 1, 2023.** It no longer receives features, updates, or security fixes. We strongly recommend migrating to [Bootstrap 5](https://getbootstrap.com/docs/5.3/migration/), which drops the jQuery dependency, improves accessibility, and adds native dark mode support. For teams unable to migrate immediately, commercial long-term support is available via [HeroDevs NES](https://www.herodevs.com/support/nes-bootstrap).
+
 ## Accessibility
 
 All components target **WCAG 2.1 Level AA** conformance. This includes semantic landmark regions, keyboard navigation, ARIA roles and labels, accessible carousels with pause/play controls (WCAG 2.2.2), focus management, and screen-reader-compatible form and navigation patterns.
