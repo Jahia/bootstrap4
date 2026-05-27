@@ -3,6 +3,14 @@
 
 A Bootstrap 4 implementation of [getbootstrap.com](http://getbootstrap.com) for Jahia Digital Experience Manager.
 
+[![Jahia 8.2+](https://img.shields.io/badge/Jahia-8.2%2B-blue)](https://www.jahia.com)
+[![Java 11+](https://img.shields.io/badge/Java-11%2B-orange)](https://adoptium.net)
+[![Bootstrap 4.6](https://img.shields.io/badge/Bootstrap-4.6-7952b3)](https://getbootstrap.com/docs/4.6/)
+[![WCAG 2.1 AA](https://img.shields.io/badge/WCAG-2.1%20AA-green)](https://www.w3.org/TR/WCAG21/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.txt)
+[![GitHub release](https://img.shields.io/github/v/release/Jahia/bootstrap4)](https://github.com/Jahia/bootstrap4/releases/latest)
+[![CodeQL](https://github.com/Jahia/bootstrap4/actions/workflows/codeql.yml/badge.svg)](https://github.com/Jahia/bootstrap4/actions/workflows/codeql.yml)
+
 See [CHANGELOG.md](CHANGELOG.md) for release history.
 
 > [!WARNING]
