@@ -1,6 +1,7 @@
 <%@ taglib uri="http://www.jahia.org/tags/jcr" prefix="jcr" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="template" uri="http://www.jahia.org/tags/templateLib" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <template:addResources type="css" resources="bootstrap.min.css"/>
 
 <c:set var="backgroundColor" value="${currentNode.properties.backgroundColor.string}"/>
@@ -11,7 +12,7 @@
 <div class="alert alert-${backgroundColor}${extraClasses}" role="alert">
     ${wrappedContent}
     <c:if test="${addDismissButton}">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <button type="button" class="close" data-dismiss="alert" aria-label="<fmt:message key='bootstrap4mix_alert.close'/>">
             <span aria-hidden="true">&times;</span>
         </button>
     </c:if>

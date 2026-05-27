@@ -86,7 +86,7 @@
         <c:if test="${renderContext.editMode}">
             <div class="col">
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="<fmt:message key='bootstrap4nt_grid.closeWarning'/>">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <strong><fmt:message key="bootstrap4nt_grid.warning"/></strong>

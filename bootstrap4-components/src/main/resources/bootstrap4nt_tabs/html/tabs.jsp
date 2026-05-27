@@ -46,13 +46,23 @@
     </c:choose>
     <c:set var="navItems">
         ${navItems}
-        <li class="nav-item">
-            <a class="nav-link ${status.first?' active':''}" data-toggle="tab" href="#${anchorName}" role="tab" aria-controls="${anchorName}">${droppableContent.displayableName}</a>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link ${status.first?' active':''}"
+               id="tab-trigger-${anchorName}"
+               data-toggle="tab"
+               href="#${anchorName}"
+               role="tab"
+               aria-controls="${anchorName}"
+               aria-selected="${status.first ? 'true' : 'false'}">${fn:escapeXml(droppableContent.displayableName)}</a>
         </li>
     </c:set>
     <c:set var="tabPanes">
         ${tabPanes}
-        <div class="tab-pane  ${status.first?' active':''} ${fade ? ' fade' : ''} ${fade && status.first ? ' show' : ''}" id="${anchorName}" role="tabpanel">
+        <div class="tab-pane  ${status.first?' active':''} ${fade ? ' fade' : ''} ${fade && status.first ? ' show' : ''}"
+             id="${anchorName}"
+             role="tabpanel"
+             aria-labelledby="tab-trigger-${anchorName}"
+             tabindex="0">
             <template:module node="${droppableContent}" editable="true"/>
         </div>
     </c:set>
@@ -76,5 +86,10 @@
             var activeTab = url.substring(url.indexOf("#") + 1);
             $('.nav[role="tablist"] a[href="#'+activeTab+'"]').tab('show');
         }
+        $(document).on('shown.bs.tab', '[role="tablist"] [role="tab"]', function (e) {
+            var tablist = $(e.target).closest('[role="tablist"]');
+            tablist.find('[role="tab"]').attr('aria-selected', 'false');
+            $(e.target).attr('aria-selected', 'true');
+        });
     </script>
 </template:addResources>

@@ -43,7 +43,7 @@
                         </c:if>
                     </c:if>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="${url.logout}" class="logout"><fmt:message key="bootstrap4mix_customBaseNavbar.label.logout"/></a>
+                    <a class="dropdown-item logout" href="${url.logout}"><fmt:message key="bootstrap4mix_customBaseNavbar.label.logout"/></a>
                 </div>
             </li>
         </ul>

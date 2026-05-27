@@ -61,7 +61,8 @@
         </template:include>
     </c:if>
     <c:if test="${! empty title}">
-        <${headerSize} class="card-header">${title}</${headerSize}>
+        <c:set var="safeHeaderSize" value="${fn:escapeXml(headerSize)}"/>
+        <${safeHeaderSize} class="card-header">${fn:escapeXml(title)}</${safeHeaderSize}>
     </c:if>
     <div class="${cardBodyCssClass}">
         <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jmix:droppableContent')}" var="droppableContent">

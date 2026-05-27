@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="template" uri="http://www.jahia.org/tags/templateLib" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 
@@ -100,17 +101,21 @@
         </c:otherwise>
     </c:choose>
 
+    <fmt:message key="bootstrap4nt_navbar.brandAlt" var="brandAltDefault"/>
     <a class="navbar-brand" href="${rootNodeUrl}">
         <c:if test="${! empty brandImage}">
             <c:url var="brandImageUrl" value="${brandImage.url}" context="/"/>
             <c:choose>
                 <c:when test="${! empty brandImageMobile}">
                     <c:url var="brandImageMobileeUrl" value="${brandImageMobile.url}" context="/"/>
-                    <img src="${brandImageUrl}" class="align-top d-none d-${expand}-inline-block" alt="">
-                    <img src="${brandImageMobileeUrl}" class="align-top d-inline-block d-${expand}-none" alt="">
+                    <img src="${brandImageUrl}" class="align-top d-none d-${expand}-inline-block"
+                         alt="${! empty brandText ? '' : fn:escapeXml(brandAltDefault)}"<c:if test="${! empty brandText}"> aria-hidden="true"</c:if>>
+                    <img src="${brandImageMobileeUrl}" class="align-top d-inline-block d-${expand}-none"
+                         alt=""<c:if test="${! empty brandText}"> aria-hidden="true"</c:if>>
                 </c:when>
                 <c:otherwise>
-                    <img src="${brandImageUrl}" class="d-inline-block align-top" alt="">
+                    <img src="${brandImageUrl}" class="d-inline-block align-top"
+                         alt="${! empty brandText ? '' : fn:escapeXml(brandAltDefault)}"<c:if test="${! empty brandText}"> aria-hidden="true"</c:if>>
                 </c:otherwise>
             </c:choose>
 

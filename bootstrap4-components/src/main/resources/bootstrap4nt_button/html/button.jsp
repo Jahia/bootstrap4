@@ -102,7 +102,11 @@
         <button type="button" class="${buttonClass}" ${aria} data-toggle="modal" data-target="#modal-${currentNode.identifier}" id="button_${currentNode.identifier}">
             ${title}
         </button>
-        <div class="modal fade" id="modal-${currentNode.identifier}" tabindex="-1" role="dialog" aria-labelledby="modalLabel_${currentNode.identifier}" aria-hidden="${renderContext.editMode ? 'false' : 'true'}">
+        <div class="modal fade" id="modal-${currentNode.identifier}" tabindex="-1"
+             role="dialog"
+             aria-modal="true"
+             <c:choose><c:when test="${not empty modalTitle}">aria-labelledby="modalLabel_${currentNode.identifier}"</c:when><c:otherwise>aria-label="${fn:escapeXml(title)}"</c:otherwise></c:choose>
+             aria-hidden="${renderContext.editMode ? 'false' : 'true'}">
             <div class="modal-dialog ${modalSize}"<c:if test='${renderContext.editMode}'> style="margin:5px;"</c:if>>
                 <div class="modal-content">
                     <c:if test="${not empty modalTitle}">

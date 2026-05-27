@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="jcr" uri="http://www.jahia.org/tags/jcr" %>
 <%@ taglib prefix="ui" uri="http://www.jahia.org/tags/uiComponentsLib" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
 <%--@elvariable id="out" type="java.io.PrintWriter"--%>
 <%--@elvariable id="script" type="org.jahia.services.render.scripting.Script"--%>
@@ -32,7 +33,7 @@
             <a class="media-left" href="#">
                 <c:if test="${! empty imageNode}">
                     <c:url var="imageUrl" value="${imageNode.url}" context="/"/>
-                    <img src="${imageUrl}" style="width: 64px"/>
+                    <img src="${imageUrl}" style="width: 64px" alt="${fn:escapeXml(empty title ? imageNode.displayableName : title)}"/>
                 </c:if>
             </a>
             <div class="media-body">
@@ -46,10 +47,18 @@
         </div>
     </c:when>
     <c:otherwise>
-        <div class="carousel-item${currentStatus}${carouselItemClass}">
+        <c:set var="slideIndex" value="${currentResource.moduleParams.slideIndex}"/>
+        <c:set var="totalSlides" value="${currentResource.moduleParams.totalSlides}"/>
+        <fmt:message key="bootstrap4nt_carousel.slideLabel" var="slideLabelText">
+            <fmt:param value="${empty slideIndex ? '' : slideIndex}"/>
+            <fmt:param value="${empty totalSlides ? '' : totalSlides}"/>
+        </fmt:message>
+        <div class="carousel-item${currentStatus}${carouselItemClass}"
+             role="group"
+             <c:if test="${! empty slideIndex}">aria-label="${fn:escapeXml(slideLabelText)}"</c:if>>
             <c:if test="${! empty imageNode}">
                 <c:url var="imageUrl" value="${imageNode.url}" context="/"/>
-                <img src="${imageUrl}" class="d-block w-100"/>
+                <img src="${imageUrl}" class="d-block w-100" alt="${fn:escapeXml(empty title ? imageNode.displayableName : title)}"/>
             </c:if>
             <c:if test="${! empty title || ! empty caption}">
                 <div class="carousel-caption d-none d-md-block${carouselCaptionClass}">

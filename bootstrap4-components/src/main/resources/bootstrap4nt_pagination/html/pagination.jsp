@@ -79,6 +79,8 @@
                 </c:otherwise>
             </c:choose>
 
+                <fmt:message key="bootstrap4mix_advancedPagination.navLabel" var="paginationNavLabel"/>
+                <nav aria-label="${fn:escapeXml(paginationNavLabel)}">
                 <ul class="pagination ${layout} ${align}">
                     <c:url value="${searchUrl}" var="previousUrl" context="/">
                         <c:param name="${beginid}" value="${(moduleMap.currentPage-2) * moduleMap.pageSize }"/>
@@ -102,9 +104,10 @@
                         </c:if>
                     </c:url>
                     <li class="page-item${empty moduleMap.currentPage or moduleMap.currentPage le 1 ? ' disabled' : ''}">
-                        <a class="page-link" tabindex="-1"
+                        <a class="page-link"
                            href="${empty moduleMap.currentPage or moduleMap.currentPage le 1 ? '#' : previousUrl}"
-                           aria-label="<fmt:message key='bootstrap4mix_advancedPagination.previous'/>">
+                           aria-label="<fmt:message key='bootstrap4mix_advancedPagination.previous'/>"
+                           <c:if test="${empty moduleMap.currentPage or moduleMap.currentPage le 1}">aria-disabled="true"</c:if>>
                             <span aria-hidden="true">&laquo;</span>
                             <span class="sr-only"><fmt:message key="bootstrap4mix_advancedPagination.previous"/></span>
                         </a>
@@ -187,12 +190,14 @@
 
                     <li class="page-item${moduleMap.currentPage ge moduleMap.nbPages ? ' disabled' : ''}">
                         <a class="page-link" href="${moduleMap.currentPage ge moduleMap.nbPages ? '#' : nextUrl}"
-                           aria-label="<fmt:message key='bootstrap4mix_advancedPagination.next'/>">
+                           aria-label="<fmt:message key='bootstrap4mix_advancedPagination.next'/>"
+                           <c:if test="${moduleMap.currentPage ge moduleMap.nbPages}">aria-disabled="true"</c:if>>
                             <span aria-hidden="true">&raquo;</span>
                             <span class="sr-only"><fmt:message key="bootstrap4mix_advancedPagination.next"/></span>
                         </a>
                     </li>
                 </ul>
+                </nav>
             <c:set target="${moduleMap}" property="usePagination" value="false"/>
             <c:remove var="listTemplate"/>
         </c:if>

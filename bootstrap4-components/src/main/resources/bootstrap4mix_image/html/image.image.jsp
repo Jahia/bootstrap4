@@ -25,7 +25,10 @@
     <c:if test="${! empty id}">
         <c:set var="id" value="${id}"/>
     </c:if>
-    <c:set var="alt" value="${imageNode.displayableName}"/>
+    <c:set var="alt" value="${currentNode.properties['jcr:title'].string}"/>
+    <c:if test="${empty alt}">
+        <c:set var="alt" value="${imageNode.displayableName}"/>
+    </c:if>
     <%-- set responsive by default --%>
     <c:set var="responsive" value="true"/>
 
@@ -89,7 +92,6 @@
     <img src="${imageUrl}" alt="${fn:escapeXml(alt)}"
          <c:if test="${! empty class}"><c:out value=" "/>class="${fn:escapeXml(class)}"</c:if>
          <c:if test="${! empty style}"><c:out value=" "/>style="${fn:escapeXml(style)}"</c:if>
-         <c:if test="${! empty id}"><c:out value=" "/>id="${fn:escapeXml(id)}"</c:if>
          <c:if test="${! empty id}"><c:out value=" "/>id="${fn:escapeXml(id)}"</c:if>
     />
 </c:if>
