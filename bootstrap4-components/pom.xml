@@ -23,14 +23,14 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
   <parent>
     <groupId>org.jahia.modules</groupId>
     <artifactId>bootstrap4-modules</artifactId>
-    <version>4.7.0-SNAPSHOT</version>
+    <version>${revision}</version>
   </parent>
   <artifactId>bootstrap4-components</artifactId>
   <packaging>bundle</packaging>
   <name>Bootstrap 4 Components</name>
   <description>This module provide a Bootstrap 4 implementation of http://getbootstrap.com for Jahia</description>
   <properties>
-    <jahia-module-signature>MC0CFGQUifBeOKDpFCzyrqNzq+mTd3mWAhUAj0Z/7jqKbqiQb+FfTDx3LioMhDs=</jahia-module-signature>
+    <jahia-module-signature>MC0CFQCK2wPtaBFrUh6WjlAlYYpyLfk8SgIUUPRg8SyQ7ieIyoobUi5f0ezwwYk=</jahia-module-signature>
     <version.compiler.plugin>3.13.0</version.compiler.plugin>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
