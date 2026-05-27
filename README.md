@@ -3,6 +3,8 @@
 
 A Bootstrap 4 implementation of [getbootstrap.com](http://getbootstrap.com) for Jahia Digital Experience Manager.
 
+See [CHANGELOG.md](CHANGELOG.md) for release history.
+
 > [!WARNING]
 > **The Bootstrap 4 framework (CSS/JS assets) reached end of life on January 1, 2023.** It no longer receives features, updates, or security fixes. We strongly recommend migrating to [Bootstrap 5](https://github.com/jahia/bootstrap5/).
 
