@@ -8,7 +8,7 @@
     </parent>
     <artifactId>bootstrap4-package</artifactId>
     <name>Bootstrap 4 Package</name>
-    <version>4.7.0-SNAPSHOT</version>
+    <version>4.7.0</version>
     <packaging>pom</packaging>
     <description>Parent project to package all Bootstrap 4 related components.</description>
     <properties>
@@ -143,4 +143,8 @@
             </plugin>
         </plugins>
     </build>
+
+  <scm>
+    <tag>bootstrap4-modules-4.7.0</tag>
+  </scm>
 </project>
