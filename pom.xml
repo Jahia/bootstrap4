@@ -94,7 +94,6 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
     <modules>
         <module>bootstrap4-core</module>
         <module>bootstrap4-components</module>
-        <!--bootstrap4-package is built separately (own parent: jahia-packages-parent)-->
-        <!--<module>bootstrap4-package</module>-->
+        <module>bootstrap4-package</module>
     </modules>
 </project>
