@@ -2,13 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>jahia-packages-parent</artifactId>
-        <groupId>org.jahia.packages</groupId>
-        <version>8.0.0.0</version>
+        <artifactId>bootstrap4-modules</artifactId>
+        <groupId>org.jahia.modules</groupId>
+        <version>4.7.0-SNAPSHOT</version>
     </parent>
     <artifactId>bootstrap4-package</artifactId>
     <name>Bootstrap 4 Package</name>
-    <version>4.6.8</version>
     <packaging>pom</packaging>
     <description>Parent project to package all Bootstrap 4 related components.</description>
     <properties>
@@ -43,12 +42,12 @@
         <dependency>
             <groupId>org.jahia.modules</groupId>
             <artifactId>bootstrap4-core</artifactId>
-            <version>c</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jahia.modules</groupId>
             <artifactId>bootstrap4-components</artifactId>
-            <version>4.6.8</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
     <build>
@@ -56,6 +55,19 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/dependency</outputDirectory>
+                            <includeScope>compile</includeScope>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -63,21 +75,35 @@
                 <executions>
                     <execution>
                         <id>packaging-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
                         <configuration>
                             <attach>true</attach>
+                            <descriptors>
+                                <descriptor>${jahia.package.assembly.file}</descriptor>
+                            </descriptors>
                             <archive>
                                 <manifestEntries>
-                                    <Jahia-Required-Version>8.0.0.0</Jahia-Required-Version>
+                                    <Jahia-Required-Version>8.2.0.0</Jahia-Required-Version>
                                 </manifestEntries>
                             </archive>
                         </configuration>
                     </execution>
                     <execution>
                         <id>packaging-dependencies-sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
                         <configuration>
+                            <descriptors>
+                                <descriptor>${jahia.package.sources.assembly.file}</descriptor>
+                            </descriptors>
                             <archive>
                                 <manifestEntries>
-                                    <Jahia-Required-Version>8.0.0.0</Jahia-Required-Version>
+                                    <Jahia-Required-Version>8.2.0.0</Jahia-Required-Version>
                                 </manifestEntries>
                             </archive>
                         </configuration>
