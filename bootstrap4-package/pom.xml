@@ -4,7 +4,7 @@
     <parent>
         <artifactId>jahia-packages-parent</artifactId>
         <groupId>org.jahia.packages</groupId>
-        <version>8.2.0.0</version>
+        <version>8.2.3.0</version>
     </parent>
     <artifactId>bootstrap4-package</artifactId>
     <name>Bootstrap 4 Package</name>
