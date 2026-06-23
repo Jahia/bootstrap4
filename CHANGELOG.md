@@ -2,6 +2,17 @@
 
 All notable changes to this project are documented in this file.
 
+## [Unreleased]
+
+### Code Quality
+
+- Extracted a shared `AbstractChoiceListInitializerRenderer` base class for the `ButtonType`, `NavbarRoot`, and `GridType` choice-list initializers, which were ~90% duplicated (project duplication dropped from 32% to 0%). Removed unused `logger` fields, applied the diamond operator, and extracted the repeated `addMixin` literal to a constant.
+- `SwitchToLanguageTag` — removed a `languageCode` field that shadowed the inherited `AbstractJahiaTag.languageCode` (SonarQube BLOCKER) and added the missing `@Override` annotations.
+
+### Tests
+
+- Added the first unit tests for `bootstrap4-components` (JUnit 4 + Mockito, 16 tests) covering the three choice-list initializers and the `Functions` taglib helper, with JaCoCo coverage wiring.
+
 ## [4.7.0] - 2026-05-27
 
 ### Breaking Changes
