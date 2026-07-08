@@ -29,10 +29,10 @@
     <c:set var="sectionRole" value="${currentNode.properties['sectionRole'].string}"/>
     <c:set var="sectionAria" value="${currentNode.properties['sectionAria'].string}"/>
 
-    <${sectionType}<c:if test="${not empty sectionId}"> id="${sectionId}"</c:if><c:if
+    <${sectionType}<c:if test="${not empty sectionId}"> id="${fn:escapeXml(sectionId)}"</c:if><c:if
         test="${not empty sectionCssClass}"><c:out value=" "/>class="${fn:escapeXml(sectionCssClass)}"</c:if><c:if
         test="${not empty sectionRole}"><c:out value=" "/>role="${fn:escapeXml(sectionRole)}"</c:if><c:if
-        test="${not empty sectionStyle}"><c:out value=" "/>style="${sectionStyle}"</c:if><c:if
+        test="${not empty sectionStyle}"><c:out value=" "/>style="${fn:escapeXml(sectionStyle)}"</c:if><c:if
         test="${not empty sectionAria}"><c:out value=" "/>aria-label="${fn:escapeXml(sectionAria)}"</c:if>>
 </c:if>
 
@@ -55,8 +55,8 @@
         <c:set var="containerCssClass" value="${fn:replace(containerCssClass, containerType, '')}"/>
     </c:if>
 
-    <div<c:if test="${not empty containerId}"> id="${containerId}"</c:if> class="${containerType}<c:if
-        test="${not empty containerCssClass}"><c:out value=" "/>${containerCssClass}</c:if>">
+    <div<c:if test="${not empty containerId}"> id="${fn:escapeXml(containerId)}"</c:if> class="${fn:escapeXml(containerType)}<c:if
+        test="${not empty containerCssClass}"><c:out value=" "/>${fn:escapeXml(containerCssClass)}</c:if>">
 </c:if>
 
 <c:if test="${createRow}">
@@ -73,10 +73,10 @@
     <c:if test="${rowHorizontalAlignment eq 'default'}">
         <c:remove var="rowHorizontalAlignment"/>
     </c:if>
-    <div<c:if test="${not empty rowId}"> id="${rowId}"</c:if> class="row<c:if test='${not empty rowCssClass}'><c:out
-        value=' '/>${rowCssClass}</c:if><c:if test='${not empty rowVerticalAlignment}'><c:out
-        value=' '/>${rowVerticalAlignment}</c:if><c:if test='${not empty rowHorizontalAlignment}'><c:out
-        value=' '/>${rowHorizontalAlignment}</c:if>">
+    <div<c:if test="${not empty rowId}"> id="${fn:escapeXml(rowId)}"</c:if> class="row<c:if test='${not empty rowCssClass}'><c:out
+        value=' '/>${fn:escapeXml(rowCssClass)}</c:if><c:if test='${not empty rowVerticalAlignment}'><c:out
+        value=' '/>${fn:escapeXml(rowVerticalAlignment)}</c:if><c:if test='${not empty rowHorizontalAlignment}'><c:out
+        value=' '/>${fn:escapeXml(rowHorizontalAlignment)}</c:if>">
 </c:if>
 
 <template:include view="hidden.${gridType}"/>
