@@ -1,23 +1,18 @@
 package org.jahia.modules.bootstrap4.taglibs;
+
 import java.io.IOException;
 import java.util.Locale;
+
 import org.jahia.taglibs.AbstractJahiaTag;
 import org.jahia.utils.LanguageCodeConverters;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class SwitchToLanguageTag extends AbstractJahiaTag {
 
-    private static final transient Logger logger = org.slf4j.LoggerFactory.getLogger(SwitchToLanguageTag.class);
+    private static final transient Logger logger = LoggerFactory.getLogger(SwitchToLanguageTag.class);
 
-    private String languageCode;
-
-    public String getLanguageCode() {
-        return languageCode;
-    }
-
-    public void setLanguageCode(String languageCode) {
-        this.languageCode = languageCode;
-    }
-
+    @Override
     public int doStartTag() {
         try {
             final StringBuilder buff = new StringBuilder(300);
