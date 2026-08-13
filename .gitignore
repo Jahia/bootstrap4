@@ -2,3 +2,7 @@
 /bootstrap4-package/bootstrap4-package.iml
 /.idea/
 .flattened-pom.xml
+.DS_Store
+target/
+release.properties
+*.releaseBackup

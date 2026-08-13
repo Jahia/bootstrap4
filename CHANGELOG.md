@@ -4,6 +4,12 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [4.7.1] - 2026-08-13
+
+### Fixed
+
+- Grid/Layout: escape all attribute values emitted by `grid.jsp` — section `id`/`style`, container `id`/`class`, and row `id`/`class`/alignment classes — aligning them with the already-escaped `class`, `role`, and `aria-label` attributes.
+
 ### Code Quality
 
 - Extracted a shared `AbstractChoiceListInitializerRenderer` base class for the `ButtonType`, `NavbarRoot`, and `GridType` choice-list initializers, which were ~90% duplicated (project duplication dropped from 32% to 0%). Removed unused `logger` fields, applied the diamond operator, and extracted the repeated `addMixin` literal to a constant.
@@ -12,6 +18,10 @@ All notable changes to this project are documented in this file.
 ### Tests
 
 - Added the first unit tests for `bootstrap4-components` (JUnit 4 + Mockito, 16 tests) covering the three choice-list initializers and the `Functions` taglib helper, with JaCoCo coverage wiring.
+
+### Documentation
+
+- Added status badges to the README and backfilled the release history covering versions 2.0.0 through 4.6.8.
 
 ## [4.7.0] - 2026-05-27
 
