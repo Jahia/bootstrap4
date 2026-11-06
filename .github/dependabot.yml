@@ -5,3 +5,26 @@ updates:
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
+    groups:
+      maven-dependencies:
+        patterns:
+          - "*"
+    ignore:
+      # Jahia parents / modules define the target Jahia platform version and the
+      # shipped front-end library versions (e.g. org.jahia.modules:popperjs) - bump manually.
+      - dependency-name: "org.jahia.*"
+      # This module packages Bootstrap 4: never move bundled libraries to a new major.
+      - dependency-name: "*bootstrap*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "*jquery*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "*popper*"
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
